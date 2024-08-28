@@ -77,7 +77,7 @@ export default function Component() {
             </CardHeader>
             <CardContent>
               <p>I am a passionate blockchain developer with deep expertise in the Solana ecosystem. With 5 years of experience in software development,
-                I've honed my skills in building decentralized applications, NFT platforms, and high-performance smart contracts. </p>
+                I&lsquo;ve honed my skills in building decentralized applications, NFT platforms, and high-performance smart contracts. </p>
               <br />
               <p>
                 My journey has allowed me to work on a wide range of projects, mastering technologies such as Node.js, JavaScript, TypeScript, MySQL, PostgreSQL,
@@ -195,8 +195,8 @@ export default function Component() {
                     <AvatarFallback>JD</AvatarFallback>
                   </Avatar>
                   <div>
-                    <p className="italic">"Your Name is an exceptional blockchain developer. Their expertise in Solana and ability to optimize smart contracts is unparalleled."</p>
-                    <p className="mt-2 font-semibold">John Doe, CTO at Solana Solutions Inc.</p>
+                    <p className="italic">&quot;Lokesh Jha is an exceptional blockchain developer. Their expertise in Solana and ability to optimize smart contracts is unparalleled.&quot;</p>
+                    <p className="mt-2 font-semibold">Abhijeet Singh, Blockchain Developer</p>
                   </div>
                 </div>
               </CardContent>
@@ -209,8 +209,9 @@ export default function Component() {
                     <AvatarFallback>JS</AvatarFallback>
                   </Avatar>
                   <div>
-                    <p className="italic">"Working with Your Name on our NFT marketplace was a game-changer. Their technical skills and creativity brought our vision to life."</p>
-                    <p className="mt-2 font-semibold">Jane Smith, Founder of ArtChain</p>
+                    <p className="italic">&quot;Working with Lokesh Jha on our Affilate Program was a game-changer. 
+                      His technical skills and creativity brought our vision to life.&quot;</p>
+                    <p className="mt-2 font-semibold">Farhan, Software Dveloper at Leverage Edu</p>
                   </div>
                 </div>
               </CardContent>
