@@ -164,7 +164,7 @@ export default function Portfolio() {
           <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">About Me</h2>
           <p className="text-lg mb-6 leading-relaxed">
             I am a passionate blockchain developer with deep expertise in the Solana ecosystem. With 5 years of experience 
-            in software development, I've honed my skills in building decentralized applications, NFT platforms, and 
+            in software development, I&apos;ve honed my skills in building decentralized applications, NFT platforms, and 
             high-performance smart contracts.
           </p>
           <p className="text-lg mb-6 leading-relaxed">
@@ -271,7 +271,7 @@ export default function Portfolio() {
       <section id="contact" className="py-20 px-4">
         <div className="container mx-auto max-w-2xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">Get in Touch</h2>
-          <p className="text-center mb-12 text-lg">Interested in collaborating on a blockchain project or have questions about Solana development? Let's connect!</p>
+          <p className="text-center mb-12 text-lg">Interested in collaborating on a blockchain project or have questions about Solana development? Let&apos;s connect!</p>
           <p className="text-center mb-12 text-lg">Email: lokesh1jha@gmail.com</p>
           <div className="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4">
             <Button variant="outline" size="lg" asChild className="w-full md:w-auto bg-transparent border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-indigo-900">
