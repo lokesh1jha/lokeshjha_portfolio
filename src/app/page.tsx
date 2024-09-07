@@ -1,250 +1,305 @@
-'use client'
-
+"use client"
 import { useState, useEffect } from 'react'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Menu, X, ExternalLink, Mail, Linkedin, ChevronDown, Briefcase } from 'lucide-react'
 import { Button } from "@/components/ui/button"
-import { Progress } from "@/components/ui/progress"
-import { Switch } from "@/components/ui/switch"
-import { GithubIcon, LinkedinIcon, MailIcon, PhoneIcon, MoonIcon, SunIcon } from "lucide-react"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 
-export default function Component() {
-  const [darkMode, setDarkMode] = useState(false)
+export default function Portfolio() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('home')
 
   useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
+    const handleScroll = () => {
+      const sections = ['home', 'about', 'experience', 'projects', 'skills', 'contact']
+      const currentSection = sections.find(section => {
+        const element = document.getElementById(section)
+        if (element) {
+          const rect = element.getBoundingClientRect()
+          return rect.top <= 100 && rect.bottom >= 100
+        }
+        return false
+      })
+      if (currentSection) setActiveSection(currentSection)
     }
-  }, [darkMode])
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode)
-  }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const projects = [
+    {
+      title: "Solana NFT Marketplace",
+      description: "A high-performance NFT marketplace built on Solana, enabling fast and low-cost transactions for digital assets.",
+      tags: ["Solana", "Node.js", "React", "Rust"],
+      demoLink: "https://example.com/nft-marketplace",
+      githubLink: "https://github.com/lokeshjha/solana-nft-marketplace"
+    },
+    {
+      title: "DeFi Lending Platform",
+      description: "A decentralized finance platform on Solana for lending and borrowing crypto assets with automated interest rates.",
+      tags: ["Solana", "TypeScript", "React", "Anchor"],
+      demoLink: "https://example.com/defi-platform",
+      githubLink: "https://github.com/lokeshjha/solana-defi-lending"
+    },
+    {
+      title: "Blockchain Data Analytics",
+      description: "A real-time analytics dashboard for Solana blockchain, providing insights on transactions, token movements, and smart contract interactions.",
+      tags: ["Node.js", "Express", "PostgreSQL", "D3.js"],
+      demoLink: "https://example.com/blockchain-analytics",
+      githubLink: "https://github.com/lokeshjha/solana-analytics"
+    }
+  ]
 
   const skills = [
-    { name: "Rust", logo: "/rust_lang_logo.jpg?height=40&width=55", level: 50 },
-    { name: "Node.js", logo: "/Nodejs_logo.png?height=40&width=55", level: 90 },
-    { name: "Typescript", logo: "/ts_logo.webp?height=40&width=55", level: 90 },
-    { name: "JavaScript", logo: "/js_logo.webp?height=40&width=40", level: 90 },
-    { name: "React", logo: "/img_react_logo.webp?height=40&width=40", level: 80 },
-    { name: "AWS", logo: "/aws_logo.webp?height=40&width=40", level: 80 },
-    { name: "SQL(MySQL/PostgreSQL)", logo: "/MySQL-Logo.webp?height=40&width=55", level: 80 },
+    "Solana", "Rust", "Node.js", "JavaScript", "TypeScript", "React", 
+    "Smart Contracts", "Web3.js", "Anchor", "MySQL", "PostgreSQL", 
+    "AWS", "Docker", "Git", "Express", "RESTful APIs", "CI/CD"
+  ]
 
+  const experiences = [
+    {
+      title: "Senior Software Developer",
+      company: "Secuvy ai",
+      period: "2023 - Present",
+      responsibilities: [
+        "Leading backend development initiatives with a focus on data security and privacy, including building POCs.",
+        "Proficient in TypeScript for feature implementation and POC development.",
+        "Actively involved in research endeavours to drive innovation.",
+        "Instrumental in delivering impactful features to enhance client acquisition."
+      ]
+    },
+    {
+      title: "Full Stack Developer",
+      company: "Leverage Edu",
+      period: "2022 - 2023",
+      responsibilities: [
+        "Designed and implemented a Referral Program to increase new student registration.",
+        "Developed a system that generates incentives and invoices on leads produced by different partners for various fields.",
+        "Utilised advanced SQL queries and added checks to accurately track and verify referrals in a secure manner.",
+        "Created and maintained a bulk student upload API and UI for seamless import and export of large volumes of student data.",
+        "Secured old queries by rewriting them to protect against SQL injection, using Knex and Sequelize.",
+        "Implemented asynchronous processing and error handling mechanisms in the API, managing up to 2 lakh leads per day."
+      ]
+    },
+    {
+      title: "Backend Developer",
+      company: "Infosys Ltd",
+      period: "2020 - 2022",
+      responsibilities: [
+        "Developed RESTful APIs using Node.js, Express, and MySQL for an employee communication system.",
+        "Implemented APIs to send notices and letters to employees' phones, improving communication efficiency.",
+        "Used MySQL for secure storage and retrieval of employee data and hearing details, ensuring data integrity.",
+        "Implemented version control using Git and employed Jenkins for CI/CD to automate testing and deployment processes.",
+        "Achieved a significant reduction of 80% in paper usage by enabling SMS communication.",
+        "Increased the response rate by 50% through the implementation of SMS notifications."
+      ]
+    }
   ]
 
   return (
-    <div className="min-h-screen bg-background text-foreground transition-colors duration-200">
-      <div className="container mx-auto p-6 space-y-8">
-        <header className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
-          <div className="flex items-center space-x-4">
-            <Avatar className="w-24 h-24 border-2 border-primary">
-              <AvatarImage src="/my_pic.jpeg?height=96&width=96" alt="Your Name" />
-              <AvatarFallback>LK</AvatarFallback>
-            </Avatar>
-            <div>
-              <h1 className="text-3xl font-bold">Lokesh Kumar Jha</h1>
-              <p className="text-xl text-muted-foreground">Senior Software Engineer | Blockchain Developer</p>
-            </div>
-          </div>
-          <div className="flex items-center space-x-4">
-            <Button variant="outline" size="icon" onClick={() => window.open('mailto:5F9jz@example.com')}>
-              <MailIcon className="h-4 w-4" />
-            </Button>
-            <Button variant="outline" size="icon">
-              <PhoneIcon className="h-4 w-4" />
-            </Button>
-            <Button variant="outline" size="icon" onClick={() => window.open('https://www.linkedin.com/in/lokesh-jha-088549136/')}>
-              <LinkedinIcon className="h-4 w-4" />
-            </Button>
-            <Button variant="outline" size="icon" onClick={() => window.open('https://github.com/lokesh1jha')}>
-              <GithubIcon className="h-4 w-4" />
-            </Button>
-            <div className="flex items-center space-x-2">
-              <SunIcon className="h-4 w-4" />
-              <Switch checked={darkMode} onCheckedChange={toggleDarkMode} />
-              <MoonIcon className="h-4 w-4" />
-            </div>
-          </div>
-        </header>
-
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Card className="col-span-1 md:col-span-2 transition-all duration-300 hover:shadow-lg hover:border-primary">
-            <CardHeader>
-              <CardTitle>About Me</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p>I am a passionate blockchain developer with deep expertise in the Solana ecosystem. With 5 years of experience in software development,
-                I&lsquo;ve honed my skills in building decentralized applications, NFT platforms, and high-performance smart contracts. </p>
-              <br />
-              <p>
-                My journey has allowed me to work on a wide range of projects, mastering technologies such as Node.js, JavaScript, TypeScript, MySQL, PostgreSQL,
-                and cloud infrastructure. I am committed to pushing the boundaries of blockchain technology and delivering innovative solutions that drive real-world impact.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="transition-all duration-300 hover:shadow-lg hover:border-primary">
-            <CardHeader>
-              <CardTitle>Skills</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              {skills.map((skill) => (
-                <div key={skill.name} className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-2">
-                      <img src={skill.logo} alt={skill.name} className="w-8 h-8" />
-                      <span>{skill.name}</span>
-                    </div>
-                    <span>{skill.level}%</span>
-                  </div>
-                  <Progress value={skill.level} className="w-full" />
-                </div>
+    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-indigo-900 text-white">
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-indigo-900 bg-opacity-90 backdrop-blur-sm">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex justify-between items-center">
+            <a href="#home" className="text-2xl font-bold text-purple-400">LKJ.dev</a>
+            <div className="hidden md:flex space-x-6">
+              {['home', 'about', 'experience', 'projects', 'skills', 'contact'].map((item) => (
+                <a
+                  key={item}
+                  href={`#${item}`}
+                  className={`hover:text-purple-400 transition-colors duration-300 ${
+                    activeSection === item ? 'text-purple-400' : ''
+                  }`}
+                >
+                  {item.charAt(0).toUpperCase() + item.slice(1)}
+                </a>
               ))}
-            </CardContent>
-          </Card>
+            </div>
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden text-white">
+              {isMenuOpen ? <X /> : <Menu />}
+            </button>
+          </div>
+        </div>
+      </nav>
 
-          <Card className="transition-all duration-300 hover:shadow-lg hover:border-primary">
-            <CardHeader>
-              <CardTitle>Featured Project</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <h3 className="text-xl font-semibold mb-2">Minttix - NFT Ticketing Platform</h3>
-              <a href="https://minttix.in" target="_blank" rel="noopener noreferrer" className="text-primary transition-all duration-300 hover:underline">Visit: MintTix.in</a>
-              <p className="mb-4">Revolutionary event ticketing using Solana blockchain, ensuring authenticity and creating a new market for collectible event tickets.</p>
-              <div className="flex flex-wrap gap-2 mt-4">
-                {["Solana", "Rust", "Anchor", "React", "Node.js"].map((tech) => (
-                  <Badge key={tech} variant="secondary">{tech}</Badge>
-                ))}
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="fixed inset-0 z-40 bg-indigo-900 bg-opacity-90 backdrop-blur-sm md:hidden">
+          <div className="flex flex-col items-center justify-center h-full space-y-8">
+            {['home', 'about', 'experience', 'projects', 'skills', 'contact'].map((item) => (
+              <a
+                key={item}
+                href={`#${item}`}
+                className="text-2xl hover:text-purple-400 transition-colors duration-300"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.charAt(0).toUpperCase() + item.slice(1)}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Hero Section */}
+      <section id="home" className="min-h-screen flex items-center justify-center text-center px-4">
+        <div className="max-w-3xl mx-auto">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up">Lokesh Kumar Jha</h1>
+          <p className="text-xl md:text-2xl mb-8 text-purple-400 animate-fade-in-up animation-delay-300">Senior Software Engineer | Blockchain Developer</p>
+          <p className="text-lg md:text-xl mb-12 text-gray-300 animate-fade-in-up animation-delay-600">
+            Specializing in Solana ecosystem and decentralized applications
+          </p>
+          <Button size="lg" className="animate-fade-in-up animation-delay-900">
+            <a href="#projects">View My Work</a>
+          </Button>
+        </div>
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <ChevronDown size={32} />
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 px-4">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">About Me</h2>
+          <p className="text-lg mb-6 leading-relaxed">
+            I am a passionate blockchain developer with deep expertise in the Solana ecosystem. With 5 years of experience 
+            in software development, I've honed my skills in building decentralized applications, NFT platforms, and 
+            high-performance smart contracts.
+          </p>
+          <p className="text-lg mb-6 leading-relaxed">
+            My journey has allowed me to work on a wide range of projects, mastering technologies such as Node.js, 
+            JavaScript, TypeScript, MySQL, PostgreSQL, and cloud infrastructure. I am committed to pushing the boundaries 
+            of blockchain technology and delivering innovative solutions that drive real-world impact.
+          </p>
+          <p className="text-lg leading-relaxed">
+            I thrive on challenges and am constantly exploring new ways to leverage blockchain technology to solve 
+            complex problems. My goal is to contribute to the evolution of decentralized systems and create 
+            applications that are not only technologically advanced but also user-friendly and impactful.
+          </p>
+        </div>
+      </section>
+
+      {/* Experience Section */}
+      <section id="experience" className="py-20 px-4 bg-indigo-800">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Work Experience</h2>
+          <div className="relative">
+            {/* Vertical line */}
+            <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-1 bg-purple-500 transform -translate-x-1/2"></div>
+            
+            {experiences.map((exp, index) => (
+              <div key={index} className={`mb-12 relative ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
+                {/* Dot on the timeline */}
+                <div className="absolute left-0 md:left-1/2 top-0 w-6 h-6 bg-purple-500 rounded-full transform -translate-x-1/2 flex items-center justify-center">
+                  <Briefcase size={16} />
+                </div>
+                
+                {/* Content */}
+                <div className={`ml-8 md:ml-0 ${index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'}`}>
+                  <div className={`bg-gradient-to-br from-indigo-700 to-purple-700 p-6 rounded-lg shadow-lg ${index % 2 === 0 ? 'md:mr-4' : 'md:ml-4'}`}>
+                    <h3 className="text-2xl font-semibold mb-2 text-purple-300">{exp.title}</h3>
+                    <p className="text-purple-400 mb-4">{exp.company} | {exp.period}</p>
+                    <ul className="list-disc list-inside space-y-2 text-left">
+                      {exp.responsibilities.map((resp, respIndex) => (
+                        <li key={respIndex} className="text-gray-300">{resp}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
               </div>
-            </CardContent>
-          </Card>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Work Experience</h2>
-          <div className="space-y-6">
-            <Card className="transition-all duration-300 hover:shadow-lg hover:border-primary">
-              <CardHeader>
-                <CardTitle>Senior Software Developer</CardTitle>
-                <CardDescription>Secuvy ai | 2023 - Present</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="list-disc pl-6 space-y-2">
-                  <li>Leading backend development initiatives with a focus on data security and privacy, including building POCs.</li>
-                  <li>Proficient in TypeScript for feature implementation and POC development.</li>
-                  <li>Actively involved in research endeavours to drive innovation.</li>
-                  <li>Instrumental in delivering impactful features to enhance client acquisition.</li>
-                </ul>
-              </CardContent>
-            </Card>
-            <Card className="transition-all duration-300 hover:shadow-lg hover:border-primary">
-              <CardHeader>
-                <CardTitle>Full Stack Developer</CardTitle>
-                <CardDescription>Leverage Edu. | 2022 - 2023</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="list-disc pl-6 space-y-2">
-                  <li>Designed and implemented a Referral Program to increase new student registration.</li>
-                  <li>Developed a system that generates incentives and invoices on leads produced by different partners for various fields.</li>
-                  <li>Utilised advanced SQL queries and added checks to accurately track and verify referrals in a secure manner.</li>
-                  <li>Created and maintained a bulk student upload API and UI for seamless import and export of large volumes of student
-                    data.</li>
-                  <li>Secured old queries by rewriting them to protect against SQL injection, using Knex and Sequelize.</li>
-                  <li>Implemented asynchronous processing and error handling mechanisms in the API, managing up to 2 lakh leads per day.</li>
-                </ul>
-              </CardContent>
-            </Card>
-            <Card className="transition-all duration-300 hover:shadow-lg hover:border-primary">
-              <CardHeader>
-                <CardTitle>Backend Developer</CardTitle>
-                <CardDescription>Infosys Ltd. | 2020 - 2022</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="list-disc pl-6 space-y-2">
-                  <li>Developed RESTful APIs using Node.js, Express, and MySQL for an employee communication system.</li>
-                  <li>Implemented APIs to send notices and letters to employees’ phones, improving communication efficiency.</li>
-                  <li>Used MySQL for secure storage and retrieval of employee data and hearing details, ensuring data integrity.</li>
-                  <li>Implemented version control using Git and employed Jenkins for CI/CD to automate testing and deployment processes.</li>
-                  <li>Achieved a significant reduction of 80% in paper usage by enabling SMS communication.</li>
-                  <li>Increased the response rate by 50% through the implementation of SMS notifications.</li>
-                </ul>
-              </CardContent>
-            </Card>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Other Projects</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="transition-all duration-300 hover:shadow-lg hover:border-primary">
-              <CardHeader>
-                <CardTitle>Solana-based DEX</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>High-speed decentralized exchange on Solana with AMM functionality and yield farming features.</p>
-              </CardContent>
-            </Card>
-            <Card className="transition-all duration-300 hover:shadow-lg hover:border-primary">
-              <CardHeader>
-                <CardTitle>NFT Marketplace</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>Solana-based NFT marketplace using Metaplex, enabling minting, selling, and trading of unique digital assets.</p>
-              </CardContent>
-            </Card>
-            <Card className="transition-all duration-300 hover:shadow-lg hover:border-primary">
-              <CardHeader>
-                <CardTitle>Blockchain Explorer</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>Custom blockchain explorer for Solana, providing detailed transaction and account information.</p>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Testimonials</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card className="transition-all duration-300 hover:shadow-lg hover:border-primary">
-              <CardContent className="pt-6">
-                <div className="flex items-start space-x-4">
-                  <Avatar>
-                    <AvatarImage src="/placeholder.svg?height=40&width=40" alt="John Doe" />
-                    <AvatarFallback>JD</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <p className="italic">&quot;Lokesh Jha is an exceptional blockchain developer. Their expertise in Solana and ability to optimize smart contracts is unparalleled.&quot;</p>
-                    <p className="mt-2 font-semibold">Abhijeet Singh, Blockchain Developer</p>
+      {/* Projects Section */}
+      <section id="projects" className="py-20 px-4">
+        <div className="container mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Featured Projects</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.map((project, index) => (
+              <Card key={index} className="bg-gradient-to-br from-indigo-800 to-purple-800 hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
+                <CardHeader>
+                  <CardTitle className="text-xl md:text-2xl text-purple-300">{project.title}</CardTitle>
+                  <CardDescription className="text-gray-300">{project.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag, tagIndex) => (
+                      <span key={tagIndex} className="bg-indigo-600 text-purple-100 text-xs px-2 py-1 rounded-full">
+                        {tag}
+                      </span>
+                    ))}
                   </div>
-                </div>
-              </CardContent>
-            </Card>
-            <Card className="transition-all duration-300 hover:shadow-lg hover:border-primary">
-              <CardContent className="pt-6">
-                <div className="flex items-start space-x-4">
-                  <Avatar>
-                    <AvatarImage src="/placeholder.svg?height=40&width=40" alt="Jane Smith" />
-                    <AvatarFallback>JS</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <p className="italic">&quot;Working with Lokesh Jha on our Affilate Program was a game-changer.
-                      His technical skills and creativity brought our vision to life.&quot;</p>
-                    <p className="mt-2 font-semibold">Farhan, Software Dveloper at Leverage Edu</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+                <CardFooter className="flex justify-between">
+                  <Button variant="outline" size="sm" asChild className="bg-transparent border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-indigo-900">
+                    <a href={project.demoLink} target="_blank" rel="noopener noreferrer" className="flex items-center">
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      Demo
+                    </a>
+                  </Button>
+                  <Button variant="outline" size="sm" asChild className="bg-transparent border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-indigo-900">
+                    <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="flex items-center">
+                      {/* <GitHub className="w-4 h-4 mr-2" /> */}
+                      GitHub
+                    </a>
+                  </Button>
+                </CardFooter>
+              </Card>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        <footer className="text-center text-muted-foreground">
-          <p>&copy; 2023 Your Name. All rights reserved.</p>
-        </footer>
-      </div>
+      {/* Skills Section */}
+      <section id="skills" className="py-20 px-4 bg-indigo-800">
+        <div className="container mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Technical Skills</h2>
+          <div className="flex flex-wrap justify-center gap-4">
+            {skills.map((skill, index) => (
+              <span key={index} className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm md:text-base transition-all duration-300 hover:from-indigo-500 hover:to-purple-500 hover:scale-110">
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 px-4">
+        <div className="container mx-auto max-w-2xl">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">Get in Touch</h2>
+          <p className="text-center mb-12 text-lg">Interested in collaborating on a blockchain project or have questions about Solana development? Let's connect!</p>
+          <p className="text-center mb-12 text-lg">Email: lokesh1jha@gmail.com</p>
+          <div className="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4">
+            <Button variant="outline" size="lg" asChild className="w-full md:w-auto bg-transparent border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-indigo-900">
+              <a href="mailto:lokesh1jha@gmail.com" className="flex items-center justify-center">
+                <Mail className="w-5 h-5 mr-2" />
+                Email Me
+              </a>
+            </Button>
+            <Button variant="outline" size="lg" asChild className="w-full md:w-auto bg-transparent border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-indigo-900">
+              <a href="https://github.com/lokesh1jha" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
+                {/* <GitHub className="w-5 h-5 mr-2" /> */}
+                GitHub Profile
+              </a>
+            </Button>
+            <Button variant="outline" size="lg" asChild className="w-full md:w-auto bg-transparent border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-indigo-900">
+              <a href="https://www.linkedin.com/in/lokesh-jha-088549136/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
+                <Linkedin className="w-5 h-5 mr-2" />
+                LinkedIn
+              </a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-6 text-center text-gray-400">
+        <p>&copy; 2023 Lokesh Kumar Jha. All rights reserved.</p>
+      </footer>
     </div>
   )
 }
