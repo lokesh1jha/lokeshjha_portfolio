@@ -41,7 +41,7 @@ export default function Component() {
         <header className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
           <div className="flex items-center space-x-4">
             <Avatar className="w-24 h-24 border-2 border-primary">
-              <AvatarImage src="/placeholder.svg?height=96&width=96" alt="Your Name" />
+              <AvatarImage src="/my_pic.jpeg?height=96&width=96" alt="Your Name" />
               <AvatarFallback>LK</AvatarFallback>
             </Avatar>
             <div>
@@ -112,6 +112,7 @@ export default function Component() {
             </CardHeader>
             <CardContent>
               <h3 className="text-xl font-semibold mb-2">Minttix - NFT Ticketing Platform</h3>
+              <a href="https://minttix.in" target="_blank" rel="noopener noreferrer" className="text-primary transition-all duration-300 hover:underline">Visit: MintTix.in</a>
               <p className="mb-4">Revolutionary event ticketing using Solana blockchain, ensuring authenticity and creating a new market for collectible event tickets.</p>
               <div className="flex flex-wrap gap-2 mt-4">
                 {["Solana", "Rust", "Anchor", "React", "Node.js"].map((tech) => (
@@ -127,27 +128,48 @@ export default function Component() {
           <div className="space-y-6">
             <Card className="transition-all duration-300 hover:shadow-lg hover:border-primary">
               <CardHeader>
-                <CardTitle>Senior Blockchain Developer</CardTitle>
-                <CardDescription>Solana Solutions Inc. | 2021 - Present</CardDescription>
+                <CardTitle>Senior Software Developer</CardTitle>
+                <CardDescription>Secuvy ai | 2023 - Present</CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="list-disc pl-6 space-y-2">
-                  <li>Lead development of Solana-based dApps, including Minttix NFT ticketing platform</li>
-                  <li>Design and implement smart contracts using Rust and the Anchor framework</li>
-                  <li>Optimize transaction throughput and minimize costs on the Solana network</li>
+                  <li>Leading backend development initiatives with a focus on data security and privacy, including building POCs.</li>
+                  <li>Proficient in TypeScript for feature implementation and POC development.</li>
+                  <li>Actively involved in research endeavours to drive innovation.</li>
+                  <li>Instrumental in delivering impactful features to enhance client acquisition.</li>
                 </ul>
               </CardContent>
             </Card>
             <Card className="transition-all duration-300 hover:shadow-lg hover:border-primary">
               <CardHeader>
                 <CardTitle>Full Stack Developer</CardTitle>
-                <CardDescription>Tech Innovators Ltd. | 2018 - 2021</CardDescription>
+                <CardDescription>Leverage Edu. | 2022 - 2023</CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="list-disc pl-6 space-y-2">
-                  <li>Developed and maintained RESTful APIs using Node.js and Express.js</li>
-                  <li>Implemented microservices architecture for improved scalability</li>
-                  <li>Utilized Docker and Kubernetes for containerization and orchestration</li>
+                  <li>Designed and implemented a Referral Program to increase new student registration.</li>
+                  <li>Developed a system that generates incentives and invoices on leads produced by different partners for various fields.</li>
+                  <li>Utilised advanced SQL queries and added checks to accurately track and verify referrals in a secure manner.</li>
+                  <li>Created and maintained a bulk student upload API and UI for seamless import and export of large volumes of student
+                    data.</li>
+                  <li>Secured old queries by rewriting them to protect against SQL injection, using Knex and Sequelize.</li>
+                  <li>Implemented asynchronous processing and error handling mechanisms in the API, managing up to 2 lakh leads per day.</li>
+                </ul>
+              </CardContent>
+            </Card>
+            <Card className="transition-all duration-300 hover:shadow-lg hover:border-primary">
+              <CardHeader>
+                <CardTitle>Backend Developer</CardTitle>
+                <CardDescription>Infosys Ltd. | 2020 - 2022</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="list-disc pl-6 space-y-2">
+                  <li>Developed RESTful APIs using Node.js, Express, and MySQL for an employee communication system.</li>
+                  <li>Implemented APIs to send notices and letters to employees’ phones, improving communication efficiency.</li>
+                  <li>Used MySQL for secure storage and retrieval of employee data and hearing details, ensuring data integrity.</li>
+                  <li>Implemented version control using Git and employed Jenkins for CI/CD to automate testing and deployment processes.</li>
+                  <li>Achieved a significant reduction of 80% in paper usage by enabling SMS communication.</li>
+                  <li>Increased the response rate by 50% through the implementation of SMS notifications.</li>
                 </ul>
               </CardContent>
             </Card>
@@ -209,7 +231,7 @@ export default function Component() {
                     <AvatarFallback>JS</AvatarFallback>
                   </Avatar>
                   <div>
-                    <p className="italic">&quot;Working with Lokesh Jha on our Affilate Program was a game-changer. 
+                    <p className="italic">&quot;Working with Lokesh Jha on our Affilate Program was a game-changer.
                       His technical skills and creativity brought our vision to life.&quot;</p>
                     <p className="mt-2 font-semibold">Farhan, Software Dveloper at Leverage Edu</p>
                   </div>
