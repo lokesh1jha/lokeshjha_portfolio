@@ -168,16 +168,17 @@ export default function Portfolio() {
       <section id="about" className="py-20 px-4">
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">About Me</h2>
-          <p className="text-lg mb-6 leading-relaxed">
+          <p className="text-lg mb-6 text-justify">
             I am a passionate Backend developer with deep expertise in Node.js. With over 4 years of experience in software development, I have honed my skills in building scalable back-end systems and high-performance decentralized applications.
           </p>
-          <p className="text-lg mb-6 leading-relaxed">
+          <p className="text-lg mb-6 leading-relaxed text-justify">
             Currently, I am expanding my skill set in blockchain development, specifically focusing on Solana and Rust. My work has involved creating NFT platforms and smart contracts, alongside mastering technologies like Node.js, JavaScript, TypeScript, MySQL, PostgreSQL, and cloud infrastructure.
           </p>
-          <p className="text-lg leading-relaxed">
+          <p className="text-lg leading-relaxed text-justify">
             I thrive on solving complex challenges and am committed to pushing the boundaries of blockchain technology. My goal is to build decentralized systems that are both user-friendly and impactful, contributing to the real-world evolution of this innovative field.
           </p>
         </div>
+
       </section>
 
       {/* Experience Section */}
@@ -202,7 +203,7 @@ export default function Portfolio() {
                     <p className="text-purple-400 mb-4">{exp.company} | {exp.period}</p>
                     <ul className="list-disc list-inside space-y-2 text-left">
                       {exp.responsibilities.map((resp, respIndex) => (
-                        <li key={respIndex} className="text-gray-300">{resp}</li>
+                        <li key={respIndex} className="text-gray-300 text-justify">{resp}</li>
                       ))}
                     </ul>
                   </div>
