@@ -104,7 +104,7 @@ export default function Portfolio() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-indigo-900 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-green-900 to-indigo-900 text-white">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-indigo-900 bg-opacity-90 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-4">
