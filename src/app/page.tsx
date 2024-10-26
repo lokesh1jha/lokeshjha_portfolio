@@ -106,7 +106,7 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-green-900 to-indigo-900 text-white">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-indigo-900 bg-opacity-90 backdrop-blur-sm">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-green-900 bg-opacity-90 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
             <a href="#home" className="text-2xl font-bold text-purple-400">LKJ.dev</a>
@@ -182,7 +182,7 @@ export default function Portfolio() {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="py-20 px-4 bg-indigo-800">
+      <section id="experience" className="py-20 px-4 from-indigo-900 via-green-900 to-indigo-900">
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Work Experience</h2>
           <div className="relative">
@@ -198,7 +198,7 @@ export default function Portfolio() {
 
                 {/* Content */}
                 <div className={`ml-8 md:ml-0 ${index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'}`}>
-                  <div className={`bg-gradient-to-br from-indigo-700 to-purple-700 p-6 rounded-lg shadow-lg ${index % 2 === 0 ? 'md:mr-4' : 'md:ml-4'}`}>
+                  <div className={`bg-gradient-to-br from-white-700 to-purple-700 p-6 rounded-lg shadow-lg ${index % 2 === 0 ? 'md:mr-4' : 'md:ml-4'}`}>
                     <h3 className="text-2xl font-semibold mb-2 text-purple-300">{exp.title}</h3>
                     <p className="text-purple-400 mb-4">{exp.company} | {exp.period}</p>
                     <ul className="list-disc list-inside space-y-2 text-left">
