@@ -58,7 +58,7 @@ export default function Portfolio() {
   ]
 
   const skills = [
-    "Solana", "Rust", "Node.js", "JavaScript", "TypeScript", "React",
+    "Solana", "Rust", "Solidity", "Node.js", "JavaScript", "TypeScript", "React",
     "Smart Contracts", "Web3.js", "Anchor", "MySQL", "PostgreSQL",
     "AWS", "Docker", "Git", "Express", "RESTful APIs", "CI/CD"
   ]
@@ -166,17 +166,18 @@ export default function Portfolio() {
 
       {/* About Section */}
       <section id="about" className="py-20 px-4">
-        <div className="container mx-auto max-w-4xl">
+        <div className="container mx-auto max-full">
           <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">About Me</h2>
           <p className="text-lg mb-6 text-justify">
-            I am a passionate Backend developer with deep expertise in Node.js. With over 4 years of experience in software development, I have honed my skills in building scalable back-end systems and high-performance decentralized applications.
-          </p>
-          <p className="text-lg mb-6 leading-relaxed text-justify">
-            Currently, I am expanding my skill set in blockchain development, specifically focusing on Solana and Rust. My work has involved creating NFT platforms and smart contracts, alongside mastering technologies like Node.js, JavaScript, TypeScript, MySQL, PostgreSQL, and cloud infrastructure.
-          </p>
-          <p className="text-lg leading-relaxed text-justify">
-            I thrive on solving complex challenges and am committed to pushing the boundaries of blockchain technology. My goal is to build decentralized systems that are both user-friendly and impactful, contributing to the real-world evolution of this innovative field.
-          </p>
+  I am a passionate <b>Backend developer</b> with deep expertise in <b>Node.js</b>. With over <b>4 years of experience</b> in software development, I have honed my skills in building scalable back-end systems and high-performance decentralized applications.
+</p>
+<p className="text-lg mb-6 leading-relaxed text-justify">
+  Currently, I am expanding my skill set in <b>blockchain development</b>, specifically focusing on <b>Solana</b> and <b>Rust</b>. My work has involved creating <b>NFT platforms</b> and <b>smart contracts</b>, alongside mastering technologies like <b>Node.js</b>, <b>JavaScript</b>, <b>TypeScript</b>, <b>MySQL</b>, <b>PostgreSQL</b>, and cloud infrastructure.
+</p>
+<p className="text-lg leading-relaxed text-justify">
+  I thrive on solving complex challenges and am committed to pushing the boundaries of blockchain technology. My goal is to build <b>decentralized systems</b> that are both <b>user-friendly</b> and impactful, contributing to the real-world evolution of this innovative field.
+</p>
+
         </div>
 
       </section>
@@ -220,7 +221,7 @@ export default function Portfolio() {
           <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Featured Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
-              <Card key={index} className="bg-gradient-to-br from-indigo-800 to-purple-800 hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
+              <Card key={index} className="bg-gradient-to-br from-white-800 to-purple-800 hover:from-green-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
                 <CardHeader>
                   <CardTitle className="text-xl md:text-2xl text-purple-300">{project.title}</CardTitle>
                   <CardDescription className="text-gray-300">{project.description}</CardDescription>
@@ -272,7 +273,7 @@ export default function Portfolio() {
       <section id="contact" className="py-20 px-4">
         <div className="container mx-auto max-w-2xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">Get in Touch</h2>
-          <p className="text-center mb-12 text-lg">Interested in collaborating on a blockchain project or have questions about Solana development? Let&apos;s connect!</p>
+          <p className="text-center mb-12 text-lg">Interested in collaborating on a Software development or blockchain projects? Let&apos;s connect!</p>
           <p className="text-center mb-12 text-lg">Email: lokesh1jha@gmail.com</p>
           <div className="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4">
             <Button variant="outline" size="lg" asChild className="w-full md:w-auto bg-transparent border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-indigo-900">
