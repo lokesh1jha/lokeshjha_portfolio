@@ -28,31 +28,38 @@ export default function Portfolio() {
 
   const projects = [
     {
-      title: "Solana NFT Marketplace",
-      description: "A high-performance NFT marketplace built on Solana, enabling fast and low-cost transactions for digital assets.",
-      tags: ["Solana", "Node.js", "React", "Rust"],
-      demoLink: "https://example.com/nft-marketplace",
-      githubLink: "https://github.com/lokeshjha/solana-nft-marketplace"
+      title: "Minttix - NFT ticketing platform",
+      description: "A decentralized NFT ticketing platform for events. Oraganise and sell tickets on Solana blockchain. Resale tickets for events.",
+      tags: ["Solana", "Node.js", "React", "Next.js", "Rust"],
+      demoLink: "https://minttix.in/",
+      githubLink: "https://github.com/abhijeetsingh-22/nft-ticketing"
     },
     {
-      title: "DeFi Lending Platform",
-      description: "A decentralized finance platform on Solana for lending and borrowing crypto assets with automated interest rates.",
-      tags: ["Solana", "TypeScript", "React", "Anchor"],
-      demoLink: "https://example.com/defi-platform",
-      githubLink: "https://github.com/lokeshjha/solana-defi-lending"
+      title: "Sniff - Web based wallet",
+      description: "A simple web based wallet where someone can come and create a pneumonic, add multiple wallets and see the public key associated with each wallet.",
+      tags: ["Solana", "TypeScript", "React", "Next.js", "Rust", "Anchor"],
+      demoLink: "https://sniff-wallet.vercel.app/",
+      githubLink: "https://github.com/lokesh1jha/web-based-wallet"
     },
     {
-      title: "Blockchain Data Analytics",
-      description: "A real-time analytics dashboard for Solana blockchain, providing insights on transactions, token movements, and smart contract interactions.",
-      tags: ["Node.js", "Express", "PostgreSQL", "D3.js"],
-      demoLink: "https://example.com/blockchain-analytics",
-      githubLink: "https://github.com/lokeshjha/solana-analytics"
+      title: "DevPool - Job Portal",
+      description: "Devpool is a dynamic job portal designed to connect job seekers with employers, enabling seamless job postings and applications. Built using modern web technologies, it offers a user-friendly interface for both recruiters and candidates, facilitating efficient job matching and profile management.",
+      tags: ["Node.js", "Express", "PostgreSQL", "Next.js", "Supabase"],
+      demoLink: "https://devpool-bay.vercel.app/",
+      githubLink: "https://github.com/lokesh1jha/devpool"
+    },
+    {
+      title: "Dukaan - E-commerce",
+      description: "E-commerce platform with authentication, cart, checkout, payment integration, and admin dashboard.",
+      tags: ["Node.js", "Express", "PostgreSQL", "Next.js"],
+      demoLink: "https://dukaan.vercel.app/",
+      githubLink: "https://github.com/lokesh1jha/Dukaan"
     }
   ]
 
   const skills = [
-    "Solana", "Rust", "Node.js", "JavaScript", "TypeScript", "React", 
-    "Smart Contracts", "Web3.js", "Anchor", "MySQL", "PostgreSQL", 
+    "Solana", "Rust", "Node.js", "JavaScript", "TypeScript", "React",
+    "Smart Contracts", "Web3.js", "Anchor", "MySQL", "PostgreSQL",
     "AWS", "Docker", "Git", "Express", "RESTful APIs", "CI/CD"
   ]
 
@@ -108,9 +115,8 @@ export default function Portfolio() {
                 <a
                   key={item}
                   href={`#${item}`}
-                  className={`hover:text-purple-400 transition-colors duration-300 ${
-                    activeSection === item ? 'text-purple-400' : ''
-                  }`}
+                  className={`hover:text-purple-400 transition-colors duration-300 ${activeSection === item ? 'text-purple-400' : ''
+                    }`}
                 >
                   {item.charAt(0).toUpperCase() + item.slice(1)}
                 </a>
@@ -147,7 +153,7 @@ export default function Portfolio() {
           <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up">Lokesh Kumar Jha</h1>
           <p className="text-xl md:text-2xl mb-8 text-purple-400 animate-fade-in-up animation-delay-300">Senior Software Engineer | Blockchain Developer</p>
           <p className="text-lg md:text-xl mb-12 text-gray-300 animate-fade-in-up animation-delay-600">
-            Specializing in Solana ecosystem and decentralized applications
+            Specializing in Backend Development and decentralized applications
           </p>
           <Button size="lg" className="animate-fade-in-up animation-delay-900">
             <a href="#projects">View My Work</a>
@@ -163,19 +169,13 @@ export default function Portfolio() {
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">About Me</h2>
           <p className="text-lg mb-6 leading-relaxed">
-            I am a passionate blockchain developer with deep expertise in the Solana ecosystem. With 5 years of experience 
-            in software development, I&apos;ve honed my skills in building decentralized applications, NFT platforms, and 
-            high-performance smart contracts.
+            I am a passionate Backend developer with deep expertise in Node.js. With over 4 years of experience in software development, I have honed my skills in building scalable back-end systems and high-performance decentralized applications.
           </p>
           <p className="text-lg mb-6 leading-relaxed">
-            My journey has allowed me to work on a wide range of projects, mastering technologies such as Node.js, 
-            JavaScript, TypeScript, MySQL, PostgreSQL, and cloud infrastructure. I am committed to pushing the boundaries 
-            of blockchain technology and delivering innovative solutions that drive real-world impact.
+            Currently, I am expanding my skill set in blockchain development, specifically focusing on Solana and Rust. My work has involved creating NFT platforms and smart contracts, alongside mastering technologies like Node.js, JavaScript, TypeScript, MySQL, PostgreSQL, and cloud infrastructure.
           </p>
           <p className="text-lg leading-relaxed">
-            I thrive on challenges and am constantly exploring new ways to leverage blockchain technology to solve 
-            complex problems. My goal is to contribute to the evolution of decentralized systems and create 
-            applications that are not only technologically advanced but also user-friendly and impactful.
+            I thrive on solving complex challenges and am committed to pushing the boundaries of blockchain technology. My goal is to build decentralized systems that are both user-friendly and impactful, contributing to the real-world evolution of this innovative field.
           </p>
         </div>
       </section>
@@ -187,14 +187,14 @@ export default function Portfolio() {
           <div className="relative">
             {/* Vertical line */}
             <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-1 bg-purple-500 transform -translate-x-1/2"></div>
-            
+
             {experiences.map((exp, index) => (
               <div key={index} className={`mb-12 relative ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
                 {/* Dot on the timeline */}
                 <div className="absolute left-0 md:left-1/2 top-0 w-6 h-6 bg-purple-500 rounded-full transform -translate-x-1/2 flex items-center justify-center">
                   <Briefcase size={16} />
                 </div>
-                
+
                 {/* Content */}
                 <div className={`ml-8 md:ml-0 ${index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'}`}>
                   <div className={`bg-gradient-to-br from-indigo-700 to-purple-700 p-6 rounded-lg shadow-lg ${index % 2 === 0 ? 'md:mr-4' : 'md:ml-4'}`}>
