@@ -1,8 +1,292 @@
 "use client"
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Menu, X, ExternalLink, Mail, Linkedin, ChevronDown, Briefcase } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import HeroSection from "../components/sections/HeroSection";
+import AboutSection from "../components/sections/AboutSection";
+import ProjectsSection from "../components/sections/ProjectsSection";
+import SkillsSection from "../components/sections/SkillsSection";
+import ExperienceSection from "../components/sections/ExperienceSection";
+import ContactSection from "../components/sections/ContactSection";
+
+function useFadeInOnScroll() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+    const observer = new window.IntersectionObserver(
+      ([entry]) => setVisible(entry.isIntersecting),
+      { threshold: 0.10 }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+  return [ref, visible] as const;
+}
+
+// Sample project data, now grouped by category
+const PROJECT_CATEGORIES = [
+  {
+    label: "WebApp",
+    color: "#2563eb",
+    projects: [
+      {
+        title: "Portfolio Website",
+        description: "A modern, minimal portfolio built with Next.js and Tailwind CSS.",
+        image: "/next.svg",
+        link: "#",
+        details: "This project showcases my skills in React, Next.js, and UI design. It features a responsive layout, dark mode, and smooth animations.",
+      },
+      {
+        title: "E-commerce Platform",
+        description: "A scalable e-commerce solution with secure payments and admin dashboard.",
+        image: "/js_logo.webp",
+        link: "#",
+        details: "Built with Node.js, Express, and React. Includes product management, order tracking, and user authentication.",
+      },
+    ],
+  },
+  {
+    label: "Web3",
+    color: "#a21caf",
+    projects: [
+      {
+        title: "NFT Ticketing Dapp – Minttix",
+        description: "NFT-based event ticketing platform on Solana blockchain.",
+        image: "/minttix-landing-page.png",
+        link: "https://minttix.in/",
+        details: "Secure QR-based entry validation, NFT resale, on-chain minting, wallet-based payments, Redis cache, Kafka for mint processing.",
+      },
+      {
+        title: "Sniff",
+        description: "Web based crypto wallet",
+        image: "/sniff-web-based-wallet.png",
+        link: "https://sniff-wallet.vercel.app/",
+        details: "Like we have metamask, this is a web based wallet. This is totally on your browser. You can use it to send and receive SOL and other tokens.",
+      },
+      {
+        title: "Solmeet",
+        description: "Connect with Crypto Experts",
+        image: "/solmeet.png",
+        link: "https://solmeet-rosy.vercel.app/",
+        details: "Solmeet is a platform for connecting with crypto experts. You can find experts in the platform and connect with them.",
+      },
+    ],
+  },
+  {
+    label: "AI",
+    color: "#059669",
+    projects: [
+      {
+        title: "AI-Wakil – AI-Powered Legal Assistant",
+        description: "Legal document analysis platform with React, Fastify, and AI/ML layer.",
+        image: "/aws_logo.webp",
+        link: "https://github.com/lokesh1jha/ai-wakil",
+        details: "Multi-format document parsing, OpenAI API integration for summarization and case assessment.",
+      },
+    ],
+  },
+];
+
+function ProjectModal({ open, onClose, project }: { open: boolean; onClose: () => void; project: any }) {
+  if (!open || !project) return null;
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      tabIndex={-1}
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        background: 'rgba(30,41,59,0.55)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 1000,
+        animation: 'fadeIn 0.2s',
+      }}
+      onClick={onClose}
+    >
+      <div
+        className="card"
+        style={{ maxWidth: 400, width: '90vw', position: 'relative' }}
+        onClick={e => e.stopPropagation()}
+      >
+        <button
+          aria-label="Close project preview"
+          onClick={onClose}
+          style={{ position: 'absolute', top: 16, right: 16, background: 'none', border: 'none', fontSize: 24, cursor: 'pointer', color: 'var(--color-primary)' }}
+        >
+          ×
+        </button>
+        <img src={project.image} alt="" style={{ width: '100%', borderRadius: 12, marginBottom: 16, objectFit: 'cover', maxHeight: 180 }} />
+        <h3 style={{ fontSize: '1.3rem', fontWeight: 600, margin: '0 0 0.5rem 0' }}>{project.title}</h3>
+        <p style={{ color: 'var(--color-text)', marginBottom: 8 }}>{project.details}</p>
+        <a href={project.link} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)', fontWeight: 500, textDecoration: 'underline' }}>View Project</a>
+      </div>
+      <style>{`@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }`}</style>
+    </div>
+  );
+}
+
+// Unique, grouped skills data
+const SKILLS = [
+  {
+    category: "Languages",
+    color: "#2563eb",
+    items: ["JavaScript", "TypeScript", "Java", "Python", "Go", "Rust"],
+  },
+  {
+    category: "Backend",
+    color: "#a21caf",
+    items: ["Node.js", "Express", "Spring Boot", "FastAPI", "REST", "GraphQL"],
+  },
+  {
+    category: "Frontend",
+    color: "#059669",
+    items: ["React.js", "Next.js"],
+  },
+  {
+    category: "Data",
+    color: "#eab308",
+    items: ["PostgreSQL", "MongoDB", "Redis", "MySQL"],
+  },
+  {
+    category: "Messaging / Streaming",
+    color: "#f59e42",
+    items: ["RabbitMQ", "Kafka"],
+  },
+  {
+    category: "Cloud / DevOps",
+    color: "#0ea5e9",
+    items: ["Docker", "Kubernetes", "AWS", "Terraform"],
+  },
+  {
+    category: "CI/CD / Monitoring",
+    color: "#64748b",
+    items: ["Jenkins", "GitHub Actions", "GitLab CI", "Prometheus", "Grafana", "ELK Stack"],
+  },
+  {
+    category: "Patterns",
+    color: "#f43f5e",
+    items: ["Microservices", "CQRS", "Event-Driven", "Clean Architecture"],
+  },
+];
+
+// Work experience data from resume, now with landingPage
+const EXPERIENCE = [
+  {
+    company: "Secuvy",
+    role: "Senior Software Developer",
+    location: "Hyderabad",
+    period: "Sep 2023 – Present",
+    landingPage: "https://www.secuvy.ai/", // Example public link
+    highlights: [
+      "Leading backend development initiatives focused on data security and privacy, including building POCs.",
+      "Built and maintained core backend services using Node.js (Typescript), AWS Lambda and n8n in a microservices architecture.",
+      "Integrated Redis (BullQ), and RabbitMQ for queue-based async processing and inter-service communication.",
+      "Set up CI/CD pipelines using GitLab, deploying services on AWS EKS (Kubernetes) with automated testing and rollback.",
+      "Implemented monitoring using Prometheus + Grafana, and centralized logging via the ELK Stack.",
+      "Collaborated with the AI team to integrate privacy-preserving machine learning models.",
+      "Mentored junior developers and participated in architecture planning, sprint cycles, and Agile ceremonies.",
+    ],
+  },
+  {
+    company: "Leverage Edu",
+    role: "Software Developer",
+    location: "Noida",
+    period: "Nov 2022 – Sep 2023",
+    landingPage: "https://leverageedu.com/", // Example public link
+    highlights: [
+      "Designed and implemented a Referral Program, increasing student registration by 35%.",
+      "Developed a system that automates incentives and invoices using Redis queues + PostgreSQL transactions.",
+      "Optimized SQL queries with indexing strategies, improving lead verification efficiency by 50%.",
+      "Handled bulk uploads (200K+ records) daily with efficient pagination and batching.",
+      "Built and maintained frontend components using React.js, integrating seamlessly with backend services.",
+      "Used Node.js, JavaScript, and PostgreSQL to develop and maintain scalable backend services.",
+      "Participated in system architecture discussions and distributed system challenges, contributing scalable design patterns.",
+    ],
+  },
+  {
+    company: "Infosys Ltd.",
+    role: "Backend Engineer",
+    location: "Hyderabad",
+    period: "Dec 2021 – Nov 2022",
+    landingPage: "https://www.infosys.com/", // Example public link
+    highlights: [
+      "Developed RESTful APIs using Java and Spring Boot for enterprise communication tools.",
+      "Built an SMS-based alerting system reducing manual work by 80%.",
+      "Implemented CI/CD pipelines with Jenkins and Git, reducing manual release errors.",
+      "Performed extensive query optimization, speeding up data retrieval by 60% on large employee datasets.",
+    ],
+  },
+  {
+    company: "Freelance",
+    role: "Software Developer",
+    location: "Remote",
+    period: "Jul 2019 – Aug 2021",
+    landingPage: null, // No public link
+    highlights: [
+      "Built SaaS applications using Node.js + MongoDB + Redis, optimized with caching and rate limiting.",
+      "Deployed containerized microservices to AWS (EC2, S3, Lambda) using Terraform and Docker.",
+      "Added observability using Prometheus and alerting rules.",
+      "Improved performance with SQL indexing and query caching for multi-tenant workloads.",
+    ],
+  },
+];
+
+// Social/contact links with better icons and colors
+const CONTACTS = [
+  {
+    label: "Email",
+    url: "mailto:lokesh1jha@gmail.com",
+    icon: (
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2563eb" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" style={{ minWidth: 26, minHeight: 26 }} aria-hidden="true">
+        <rect x="2" y="4" width="20" height="16" rx="4" fill="#e0e7ef" />
+        <path d="M22 6 12 13 2 6" stroke="#2563eb" strokeWidth="1.7" fill="none" />
+      </svg>
+    ),
+    color: "#2563eb",
+  },
+  {
+    label: "LinkedIn",
+    url: "https://linkedin.com/in/lokesh-jha-088549136/",
+    icon: (
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="#0a66c2" aria-hidden="true">
+        <rect width="24" height="24" rx="6" fill="#e0e7ef" />
+        <path d="M6.94 8.5a1.06 1.06 0 1 1 0-2.12 1.06 1.06 0 0 1 0 2.12ZM8.06 10.25H5.81V18h2.25v-7.75ZM12.5 10.25h-2.25V18h2.25v-4.25c0-1.25 1.5-1.13 1.5 0V18h2.25v-4.75c0-2.5-3-2.41-3-1.19V10.25Z" fill="#0a66c2" />
+      </svg>
+    ),
+    color: "#0a66c2",
+  },
+  {
+    label: "GitHub",
+    url: "https://github.com/lokesh1jha",
+    icon: (
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#18181b" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" style={{ minWidth: 26, minHeight: 26 }} aria-hidden="true">
+        <rect width="24" height="24" rx="6" fill="#e0e7ef" />
+        <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 6.8c.85.004 1.71.11 2.51.32 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85 0 1.33-.01 2.4-.01 2.73 0 .27.16.58.67.48A10.01 10.01 0 0 0 22 12c0-5.52-4.48-10-10-10Z" fill="#18181b" />
+      </svg>
+    ),
+    color: "#18181b",
+  },
+  {
+    label: "X",
+    url: "https://x.com/Lokesh1jha",
+    icon: (
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect width="24" height="24" rx="6" fill="#e0e7ef" />
+        <path d="M7 7h2.7l2.3 3.6L14.3 7H17l-3.6 5.2L17 17h-2.7l-2.3-3.7L9.7 17H7l3.6-5.3L7 7Zm2.1 1.2L12 10.5l2.9-4.3H9.1Zm5.8 8.6-2.9-4.3-2.9 4.3h5.8Z" fill="#18181b" />
+      </svg>
+    ),
+    color: "#18181b",
+  },
+];
 
 export default function Portfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -26,108 +310,26 @@ export default function Portfolio() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const projects = [
-    {
-      title: "Minttix - NFT ticketing platform",
-      description: "A decentralized NFT ticketing platform for events. Oraganise and sell tickets on Solana blockchain. Resale tickets for events.",
-      tags: ["Solana", "Node.js", "React", "Next.js", "Rust"],
-      demoLink: "https://minttix.in/",
-      githubLink: "https://github.com/abhijeetsingh-22/nft-ticketing"
-    },
-    {
-      title: "Sniff - Web based wallet",
-      description: "A simple web based wallet where someone can come and create a pneumonic, add multiple wallets and see the public key associated with each wallet.",
-      tags: ["Solana", "TypeScript", "React", "Next.js", "Rust", "Anchor"],
-      demoLink: "https://sniff-wallet.vercel.app/",
-      githubLink: "https://github.com/lokesh1jha/web-based-wallet"
-    },
-    {
-      title: "DevPool - Job Portal",
-      description: "Devpool is a dynamic job portal designed to connect job seekers with employers, enabling seamless job postings and applications. Built using modern web technologies, it offers a user-friendly interface for both recruiters and candidates, facilitating efficient job matching and profile management.",
-      tags: ["Node.js", "Express", "PostgreSQL", "Next.js", "Supabase"],
-      demoLink: "https://devpool-bay.vercel.app/",
-      githubLink: "https://github.com/lokesh1jha/devpool"
-    },
-    {
-      title: "Dukaan - E-commerce",
-      description: "E-commerce platform with authentication, cart, checkout, payment integration, and admin dashboard.",
-      tags: ["Node.js", "Express", "PostgreSQL", "Next.js"],
-      demoLink: "https://dukaan.vercel.app/",
-      githubLink: "https://github.com/lokesh1jha/Dukaan"
-    }
-  ]
 
-  const skills = [
-    "Solana", "Rust", "Solidity", "Node.js", "JavaScript", "TypeScript", "React",
-    "Smart Contracts", "Web3.js", "Anchor", "MySQL", "PostgreSQL",
-    "AWS", "Docker", "Git", "Express", "RESTful APIs", "CI/CD"
-  ]
+  // About Section with fade-in
+  const [aboutRef, aboutVisible] = useFadeInOnScroll();
+  // Projects Section with fade-in
+  const [projectsRef, projectsVisible] = useFadeInOnScroll();
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<any>(null);
+  // Skills Section with fade-in
+  const [skillsRef, skillsVisible] = useFadeInOnScroll();
+  // Work Experience Section with fade-in
+  const [workRef, workVisible] = useFadeInOnScroll();
+  // Contact Section with fade-in
+  const [contactRef, contactVisible] = useFadeInOnScroll();
 
-  const experiences = [
-    {
-      title: "Senior Software Developer",
-      company: "Secuvy ai",
-      period: "2023 - Present",
-      responsibilities: [
-        "Leading backend development initiatives with a focus on data security and privacy, including building POCs.",
-        "Proficient in TypeScript for feature implementation and POC development.",
-        "Actively involved in research endeavours to drive innovation.",
-        "Instrumental in delivering impactful features to enhance client acquisition."
-      ]
-    },
-    {
-      title: "Full Stack Developer",
-      company: "Leverage Edu",
-      period: "2022 - 2023",
-      responsibilities: [
-        "Designed and implemented a Referral Program to increase new student registration.",
-        "Developed a system that generates incentives and invoices on leads produced by different partners for various fields.",
-        "Utilised advanced SQL queries and added checks to accurately track and verify referrals in a secure manner.",
-        "Created and maintained a bulk student upload API and UI for seamless import and export of large volumes of student data.",
-        "Secured old queries by rewriting them to protect against SQL injection, using Knex and Sequelize.",
-        "Implemented asynchronous processing and error handling mechanisms in the API, managing up to 2 lakh leads per day."
-      ]
-    },
-    {
-      title: "Backend Developer",
-      company: "Infosys Ltd",
-      period: "2020 - 2022",
-      responsibilities: [
-        "Developed RESTful APIs using Node.js, Express, and MySQL for an employee communication system.",
-        "Implemented APIs to send notices and letters to employees' phones, improving communication efficiency.",
-        "Used MySQL for secure storage and retrieval of employee data and hearing details, ensuring data integrity.",
-        "Implemented version control using Git and employed Jenkins for CI/CD to automate testing and deployment processes.",
-        "Achieved a significant reduction of 80% in paper usage by enabling SMS communication.",
-        "Increased the response rate by 50% through the implementation of SMS notifications."
-      ]
-    }
-  ]
+  // Animation delays for staggered fade-in
+  const fadeDelays = [0, 0.15, 0.3, 0.45, 0.6];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-green-900 to-indigo-900 text-white">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-green-900 bg-opacity-90 backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex justify-between items-center">
-            <a href="#home" className="text-2xl font-bold text-purple-400">LKJ.dev</a>
-            <div className="hidden md:flex space-x-6">
-              {['home', 'about', 'experience', 'projects', 'skills', 'contact'].map((item) => (
-                <a
-                  key={item}
-                  href={`#${item}`}
-                  className={`hover:text-purple-400 transition-colors duration-300 ${activeSection === item ? 'text-purple-400' : ''
-                    }`}
-                >
-                  {item.charAt(0).toUpperCase() + item.slice(1)}
-                </a>
-              ))}
-            </div>
-            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden text-white">
-              {isMenuOpen ? <X /> : <Menu />}
-            </button>
-          </div>
-        </div>
-      </nav>
+      
 
       {/* Mobile Menu */}
       {isMenuOpen && (
@@ -148,159 +350,26 @@ export default function Portfolio() {
       )}
 
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center text-center px-4">
-        <div className="max-w-3xl mx-auto">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up">Lokesh Kumar Jha</h1>
-          <p className="text-xl md:text-2xl mb-8 text-purple-400 animate-fade-in-up animation-delay-300">Senior Software Engineer | Blockchain Developer</p>
-          <p className="text-lg md:text-xl mb-12 text-gray-300 animate-fade-in-up animation-delay-600">
-            Specializing in Backend Development and decentralized applications
-          </p>
-          <Button size="lg" className="animate-fade-in-up animation-delay-900">
-            <a href="#projects">View My Work</a>
-          </Button>
-        </div>
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ChevronDown size={32} />
-        </div>
-      </section>
+      <HeroSection />
 
       {/* About Section */}
-      <section id="about" className="py-20 px-4">
-        <div className="container mx-auto max-full">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">About Me</h2>
-          <p className="text-lg mb-6 text-justify">
-  I am a passionate <b>Backend developer</b> with deep expertise in <b>Node.js</b>. With over <b>4 years of experience</b> in software development, I have honed my skills in building scalable back-end systems and high-performance decentralized applications.
-</p>
-<p className="text-lg mb-6 leading-relaxed text-justify">
-  Currently, I am expanding my skill set in <b>blockchain development</b>, specifically focusing on <b>Solana</b> and <b>Rust</b>. My work has involved creating <b>NFT platforms</b> and <b>smart contracts</b>, alongside mastering technologies like <b>Node.js</b>, <b>JavaScript</b>, <b>TypeScript</b>, <b>MySQL</b>, <b>PostgreSQL</b>, and cloud infrastructure.
-</p>
-<p className="text-lg leading-relaxed text-justify">
-  I thrive on solving complex challenges and am committed to pushing the boundaries of blockchain technology. My goal is to build <b>decentralized systems</b> that are both <b>user-friendly</b> and impactful, contributing to the real-world evolution of this innovative field.
-</p>
-
-        </div>
-
-      </section>
-
-      {/* Experience Section */}
-      <section id="experience" className="py-20 px-4 from-indigo-900 via-green-900 to-indigo-900">
-        <div className="container mx-auto max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Work Experience</h2>
-          <div className="relative">
-            {/* Vertical line */}
-            <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-1 bg-purple-500 transform -translate-x-1/2"></div>
-
-            {experiences.map((exp, index) => (
-              <div key={index} className={`mb-12 relative ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
-                {/* Dot on the timeline */}
-                <div className="absolute left-0 md:left-1/2 top-0 w-6 h-6 bg-purple-500 rounded-full transform -translate-x-1/2 flex items-center justify-center">
-                  <Briefcase size={16} />
-                </div>
-
-                {/* Content */}
-                <div className={`ml-8 md:ml-0 ${index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'}`}>
-                  <div className={`bg-gradient-to-br from-white-700 to-purple-700 p-6 rounded-lg shadow-lg ${index % 2 === 0 ? 'md:mr-4' : 'md:ml-4'}`}>
-                    <h3 className="text-2xl font-semibold mb-2 text-purple-300">{exp.title}</h3>
-                    <p className="text-purple-400 mb-4">{exp.company} | {exp.period}</p>
-                    <ul className="list-disc list-inside space-y-2 text-left">
-                      {exp.responsibilities.map((resp, respIndex) => (
-                        <li key={respIndex} className="text-gray-300 text-justify">{resp}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <AboutSection aboutRef={aboutRef} aboutVisible={aboutVisible} fadeDelay={fadeDelays[0]} />
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-4">
-        <div className="container mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Featured Projects</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
-              <Card key={index} className="bg-gradient-to-br from-white-800 to-purple-800 hover:from-green-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
-                <CardHeader>
-                  <CardTitle className="text-xl md:text-2xl text-purple-300">{project.title}</CardTitle>
-                  <CardDescription className="text-gray-300">{project.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag, tagIndex) => (
-                      <span key={tagIndex} className="bg-indigo-600 text-purple-100 text-xs px-2 py-1 rounded-full">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </CardContent>
-                <CardFooter className="flex justify-between">
-                  <Button variant="outline" size="sm" asChild className="bg-transparent border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-indigo-900">
-                    <a href={project.demoLink} target="_blank" rel="noopener noreferrer" className="flex items-center">
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Demo
-                    </a>
-                  </Button>
-                  <Button variant="outline" size="sm" asChild className="bg-transparent border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-indigo-900">
-                    <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="flex items-center">
-                      {/* <GitHub className="w-4 h-4 mr-2" /> */}
-                      GitHub
-                    </a>
-                  </Button>
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ProjectsSection projectsRef={projectsRef} projectsVisible={projectsVisible} fadeDelay={fadeDelays[1]} ProjectModal={ProjectModal} PROJECT_CATEGORIES={PROJECT_CATEGORIES} />
 
       {/* Skills Section */}
-      <section id="skills" className="py-20 px-4 bg-indigo-800">
-        <div className="container mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Technical Skills</h2>
-          <div className="flex flex-wrap justify-center gap-4">
-            {skills.map((skill, index) => (
-              <span key={index} className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm md:text-base transition-all duration-300 hover:from-indigo-500 hover:to-purple-500 hover:scale-110">
-                {skill}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
+      <SkillsSection skillsRef={skillsRef} skillsVisible={skillsVisible} fadeDelay={fadeDelays[2]} SKILLS={SKILLS} />
+
+      {/* Work Experience Section */}
+      <ExperienceSection workRef={workRef} workVisible={workVisible} fadeDelay={fadeDelays[3]} EXPERIENCE={EXPERIENCE} />
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4">
-        <div className="container mx-auto max-w-2xl">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">Get in Touch</h2>
-          <p className="text-center mb-12 text-lg">Interested in collaborating on a Software development or blockchain projects? Let&apos;s connect!</p>
-          <p className="text-center mb-12 text-lg">Email: lokesh1jha@gmail.com</p>
-          <div className="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4">
-            <Button variant="outline" size="lg" asChild className="w-full md:w-auto bg-transparent border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-indigo-900">
-              <a href="mailto:lokesh1jha@gmail.com" className="flex items-center justify-center">
-                <Mail className="w-5 h-5 mr-2" />
-                Email Me
-              </a>
-            </Button>
-            <Button variant="outline" size="lg" asChild className="w-full md:w-auto bg-transparent border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-indigo-900">
-              <a href="https://github.com/lokesh1jha" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
-                {/* <GitHub className="w-5 h-5 mr-2" /> */}
-                GitHub Profile
-              </a>
-            </Button>
-            <Button variant="outline" size="lg" asChild className="w-full md:w-auto bg-transparent border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-indigo-900">
-              <a href="https://www.linkedin.com/in/lokesh-jha-088549136/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
-                <Linkedin className="w-5 h-5 mr-2" />
-                LinkedIn
-              </a>
-            </Button>
-          </div>
-        </div>
-      </section>
+      <ContactSection contactRef={contactRef} contactVisible={contactVisible} fadeDelay={fadeDelays[4]} CONTACTS={CONTACTS} />
 
       {/* Footer */}
       <footer className="py-6 text-center text-gray-400">
-        <p>&copy; 2023 Lokesh Kumar Jha. All rights reserved.</p>
+        <p>&copy; 2025 Lokesh Kumar Jha. All rights reserved.</p>
       </footer>
     </div>
   )
