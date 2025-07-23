@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function ProjectsSection({ projectsRef, projectsVisible, fadeDelay, ProjectModal, PROJECT_CATEGORIES }: any) {
   const [modalOpen, setModalOpen] = useState(false);
@@ -86,12 +87,12 @@ export default function ProjectsSection({ projectsRef, projectsVisible, fadeDela
                       (e.currentTarget as HTMLDivElement).style.borderColor = 'transparent';
                     }}
                   >
-                    <img 
+                    <Image 
                       src={project.image} 
                       alt="" 
+                      width={220}
+                      height={160}
                       style={{ 
-                        width: 220, 
-                        height: 160, 
                         borderRadius: 12, 
                         objectFit: 'cover', 
                         marginBottom: 12, 

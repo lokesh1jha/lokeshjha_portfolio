@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 export default function ExperienceSection({ workRef, workVisible, fadeDelay, EXPERIENCE }: any) {
   return (
     <section
@@ -47,10 +49,12 @@ export default function ExperienceSection({ workRef, workVisible, fadeDelay, EXP
               {job.landingPage ? (
                 <div style={{ minWidth: 180, maxWidth: 200, flex: '0 0 150px', marginRight: 11 }}>
                   <a href={job.landingPage} target="_blank" rel="noopener noreferrer" style={{ display: 'block', borderRadius: 10, overflow: 'hidden', boxShadow: '0 2px 8px 0 rgba(37,99,235,0.10)' }}>
-                    <img
+                    <Image
                       src={`https://www.google.com/s2/favicons?sz=128&domain_url=${encodeURIComponent(job.landingPage)}`}
                       alt={job.company + ' logo'}
-                      style={{ width: '100%', height: 60, objectFit: 'contain', background: '#f3f6fa', marginBottom: 8 }}
+                      width={100}
+                      height={60}
+                      style={{ width: '100%', height: 60, objectFit: 'contain', background: '#f3f6fa', marginBottom: 8, borderRadius: 8 }}
                     />
                   </a>
                 </div>
