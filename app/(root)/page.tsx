@@ -93,7 +93,14 @@ export default function IndexPage() {
             delay={0.4}
             className="font-heading text-base sm:text-xl md:text-xl lg:text-2xl"
           >
-            Senior Backend Developer [Blockchain & AI]
+            Senior Software Developer [Blockchain & AI] 
+          </AnimatedText>
+          <AnimatedText
+            as="h3"
+            delay={0.4}
+            className="font-heading text-base sm:text-xl md:text-xl lg:text-2xl"
+          >
+            Co-founder at {"CypherShield.io"}
           </AnimatedText>
           <div className="mt-4 max-w-[42rem] text-center">
             <p className="leading-normal text-muted-foreground text-sm sm:text-base">
