@@ -1,8 +1,5 @@
 "use client"
 import { useState, useEffect, useRef } from 'react'
-import { Menu, X, ExternalLink, Mail, Linkedin, ChevronDown, Briefcase } from 'lucide-react'
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import HeroSection from "../components/sections/HeroSection";
 import AboutSection from "../components/sections/AboutSection";
 import ProjectsSection from "../components/sections/ProjectsSection";
@@ -315,8 +312,6 @@ export default function Portfolio() {
   const [aboutRef, aboutVisible] = useFadeInOnScroll();
   // Projects Section with fade-in
   const [projectsRef, projectsVisible] = useFadeInOnScroll();
-  const [modalOpen, setModalOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState<any>(null);
   // Skills Section with fade-in
   const [skillsRef, skillsVisible] = useFadeInOnScroll();
   // Work Experience Section with fade-in
