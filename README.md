@@ -60,7 +60,7 @@ To get started with your own portfolio website:
    pnpm dev
    ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your web browser to see the website.
+5. Open [http://localhost:3001](http://localhost:3001) in your web browser to see the website.
 
 ## 🎨 Customization
 

@@ -32,21 +32,22 @@ export const Experiences: ExperienceInterface[] = [
     id: "cyphershield",
     companyName: "CypherShield",
     type: "Personal Project",
-    category: ["Backend", "Web3", "AI", "Blockchain"],
+    category: ["Backend", "Web3", "AI", "Cybersecurity"],
     shortDescription:
-      "Co-founded cybersecurity startup focused on blockchain and AI-powered security solutions.",
+      "Co-founded cybersecurity startup building threat shielding platforms across multiple domains using Accord AI model with SLMs.",
     websiteLink: "https://cyphershield.com",
     techStack: [
-      "Blockchain",
       "AI/ML",
       "Cybersecurity",
       "Node.js",
       "Typescript",
       "AWS",
       "Microservices",
-      "Smart Contracts",
-      "Machine Learning",
-      "Security Architecture",
+      "SLMs",
+      "Email Security",
+      "Drone Security",
+      "Healthcare Security",
+      "Accord AI",
       "Team Leadership",
       "Business Development",
     ],
@@ -55,46 +56,56 @@ export const Experiences: ExperienceInterface[] = [
     companyLogoImg: "/experience/cyphershield/logo.png",
     pagesInfoArr: [
       {
-        title: "Security Platform",
+        title: "Email Shield Platform",
         description:
-          "Developed core security products combining blockchain immutability with AI-powered threat detection.",
-        imgArr: ["/experience/cyphershield/security_1.webp"],
+          "Built comprehensive email security platform protecting against phishing, malware, and advanced email attacks.",
+        imgArr: [],
       },
       {
-        title: "AI Integration",
+        title: "Drone Security Shield",
         description:
-          "Integrated machine learning models for real-time threat detection and analysis.",
-        imgArr: ["/experience/cyphershield/ai_1.webp"],
+          "Developed threat detection and protection systems for drone operations and autonomous vehicles.",
+        imgArr: [],
       },
       {
-        title: "Blockchain Security",
+        title: "Healthcare Security Shield",
         description:
-          "Implemented smart contracts for secure identity management and access control.",
-        imgArr: ["/experience/cyphershield/blockchain_1.webp"],
+          "Created specialized security solutions for healthcare systems protecting patient data and medical devices.",
+        imgArr: [],
+      },
+      {
+        title: "Accord AI Model",
+        description:
+          "Implemented intelligent decision-making system using multiple SLMs for optimal threat detection and response.",
+        imgArr: [],
       },
       {
         title: "Team Management",
         description:
-          "Led a team of 5+ developers and security experts, establishing best practices.",
-        imgArr: ["/experience/cyphershield/team_1.webp"],
+          "Led a team of 3+ developers and security experts, establishing best practices across multiple domains.",
+        imgArr: [],
       },
     ],
     descriptionDetails: {
       paragraphs: [
-        "CypherShield represents my entrepreneurial journey in the cybersecurity space, where I co-founded a startup focused on combining blockchain technology with AI-powered security solutions.",
-        "I led the technical architecture and development of core security products that bridge the gap between traditional cybersecurity and blockchain technology, creating innovative solutions for enhanced security.",
-        "The platform integrates machine learning models for real-time threat detection and analysis, while leveraging blockchain's immutability for secure identity management and access control.",
-        "I managed a team of 5+ developers and security experts, establishing best practices for secure development and creating a scalable infrastructure for security-as-a-service platform.",
-        "Successfully raised initial funding and established strategic partnerships with major blockchain platforms and security firms, demonstrating strong business acumen alongside technical expertise.",
+        "CypherShield represents my entrepreneurial journey in the cybersecurity space, where I co-founded a startup focused on building comprehensive threat shielding platforms across multiple critical domains.",
+        "I led the development of specialized security solutions including Email Shield for protecting against phishing and email attacks, Drone Security Shield for autonomous vehicle protection, and Healthcare Security Shield for medical device and patient data protection.",
+        "The core innovation is the Accord AI model, which makes intelligent decisions on which specialized language model (SLM) to call based on input context, processes responses, and validates results for optimal threat detection and response.",
+        "I architected a microservices-based platform that integrates multiple SLMs instead of traditional LLMs, providing more focused and efficient threat detection capabilities across different security domains.",
+        "I managed a team of 3+ developers and security experts, establishing best practices for secure development and creating scalable infrastructure for multi-domain security-as-a-service platform.",
+        "Successfully raised initial funding and established strategic partnerships with major cybersecurity firms and domain-specific organizations, demonstrating strong business acumen alongside technical expertise.",
       ],
       bullets: [
-        "Co-founded and launched CypherShield, a cybersecurity startup focused on blockchain and AI integration.",
-        "Led development of core security products combining blockchain immutability with AI-powered threat detection.",
-        "Built a team of 5+ developers and security experts, establishing best practices for secure development.",
-        "Established strategic partnerships with major blockchain platforms and security firms.",
+        "Co-founded and launched CypherShield, building threat shielding platforms across multiple critical domains.",
+        "Developed Email Shield platform protecting against phishing, malware, and advanced email attacks.",
+        "Built Drone Security Shield for threat detection and protection in autonomous vehicle operations.",
+        "Created Healthcare Security Shield for medical device and patient data protection.",
+        "Implemented Accord AI model using multiple SLMs for intelligent threat detection and response decisions.",
+        "Built a team of 3+ developers and security experts, establishing best practices across multiple domains.",
+        "Established strategic partnerships with major cybersecurity firms and domain-specific organizations.",
         "Raised initial funding and managed investor relationships, demonstrating strong business acumen.",
-        "Developed scalable infrastructure for security-as-a-service platform serving multiple clients.",
-        "Created innovative security solutions bridging traditional cybersecurity and blockchain technology.",
+        "Developed scalable microservices infrastructure for multi-domain security-as-a-service platform.",
+        "Created innovative security solutions using SLMs instead of traditional LLMs for better performance.",
       ],
     },
   },
@@ -102,7 +113,7 @@ export const Experiences: ExperienceInterface[] = [
     id: "secuvy",
     companyName: "Secuvy",
     type: "Professional",
-    category: ["Backend", "Web3", "AI"],
+    category: ["Backend", "AI"],
     shortDescription:
       "Leading backend development initiatives focused on data security and privacy, including building POCs.",
     websiteLink: "https://www.secuvy.ai/",
@@ -128,28 +139,34 @@ export const Experiences: ExperienceInterface[] = [
     companyLogoImg: "/experience/secuvy/logo.png",
     pagesInfoArr: [
       {
+        title: "Landing Page",
+        description:
+          "Company landing page showcasing data security and privacy solutions.",
+        imgArr: ["/experience/secuvy/landing_1.png"],
+      },
+      {
         title: "Backend Infrastructure",
         description:
           "Built and maintained core backend services using Node.js (TypeScript), AWS Lambda and n8n in a microservices architecture.",
-        imgArr: ["/experience/secuvy/backend_1.webp"],
+        imgArr: [],
       },
       {
         title: "Queue Processing",
         description:
           "Integrated Redis (BullQ), and RabbitMQ for queue-based async processing and inter-service communication.",
-        imgArr: ["/experience/secuvy/queue_1.webp"],
+        imgArr: [],
       },
       {
         title: "CI/CD Pipeline",
         description:
           "Set up CI/CD pipelines using GitLab, deploying services on AWS EKS (Kubernetes) with automated testing and rollback.",
-        imgArr: ["/experience/secuvy/cicd_1.webp"],
+        imgArr: [],
       },
       {
         title: "Monitoring & Observability",
         description:
           "Implemented monitoring using Prometheus + Grafana, and centralized logging via the ELK Stack.",
-        imgArr: ["/experience/secuvy/monitoring_1.webp"],
+        imgArr: [],
       },
     ],
     descriptionDetails: {
@@ -198,28 +215,34 @@ export const Experiences: ExperienceInterface[] = [
     companyLogoImg: "/experience/minttix/logo.png",
     pagesInfoArr: [
       {
+        title: "Landing Page",
+        description:
+          "NFT ticketing platform landing page showcasing the complete solution.",
+        imgArr: ["/experience/minttix/logo.png"],
+      },
+      {
         title: "NFT Minting",
         description:
           "Implemented on-chain NFT minting for event tickets with unique metadata and ownership tracking.",
-        imgArr: ["/experience/minttix/minting_1.webp"],
+        imgArr: [],
       },
       {
         title: "QR Validation",
         description:
           "Built secure QR-based entry validation system for real-time ticket verification.",
-        imgArr: ["/experience/minttix/qr_1.webp"],
+        imgArr: [],
       },
       {
         title: "Resale Marketplace",
         description:
           "Developed NFT resale marketplace with automated royalty distribution to event organizers.",
-        imgArr: ["/experience/minttix/marketplace_1.webp"],
+        imgArr: [],
       },
       {
         title: "Wallet Integration",
         description:
           "Integrated Solana wallet for seamless ticket purchases and NFT management.",
-        imgArr: ["/experience/minttix/wallet_1.webp"],
+        imgArr: [],
       },
     ],
     descriptionDetails: {
@@ -264,28 +287,34 @@ export const Experiences: ExperienceInterface[] = [
     companyLogoImg: "/experience/sniff/logo.png",
     pagesInfoArr: [
       {
+        title: "Dashboard",
+        description:
+          "Web-based crypto wallet dashboard showcasing the complete wallet solution.",
+        imgArr: ["/experience/sniff/dashboard.png"],
+      },
+      {
         title: "Wallet Interface",
         description:
           "Built intuitive wallet interface for managing SOL and SPL tokens with real-time balance updates.",
-        imgArr: ["/experience/sniff/interface_1.webp"],
+        imgArr: [],
       },
       {
         title: "Transaction Management",
         description:
           "Implemented secure transaction signing and broadcasting with proper error handling.",
-        imgArr: ["/experience/sniff/transactions_1.webp"],
+        imgArr: [],
       },
       {
         title: "Token Support",
         description:
           "Added support for multiple SPL tokens with automatic token detection and management.",
-        imgArr: ["/experience/sniff/tokens_1.webp"],
+        imgArr: [],
       },
       {
         title: "Security Features",
         description:
           "Implemented encryption for private keys and secure storage mechanisms.",
-        imgArr: ["/experience/sniff/security_1.webp"],
+        imgArr: [],
       },
     ],
     descriptionDetails: {
@@ -309,7 +338,7 @@ export const Experiences: ExperienceInterface[] = [
   },
   {
     id: "ai-wakil",
-    companyName: "AI-Wakil - AI-Powered Legal Assistant",
+    companyName: "AI-Wakil - AI-Powered Legal Assistant (Work in Progress)",
     type: "Personal Project",
     category: ["AI", "Backend", "Full Stack"],
     shortDescription:
@@ -333,25 +362,25 @@ export const Experiences: ExperienceInterface[] = [
         title: "Document Analysis",
         description:
           "Built AI-powered document parsing system supporting multiple formats (PDF, DOC, TXT).",
-        imgArr: ["/experience/ai-wakil/analysis_1.webp"],
+        imgArr: [],
       },
       {
         title: "Legal Summarization",
         description:
           "Implemented OpenAI API integration for legal document summarization and case assessment.",
-        imgArr: ["/experience/ai-wakil/summary_1.webp"],
+        imgArr: [],
       },
       {
         title: "Case Analysis",
         description:
           "Developed intelligent case analysis system with precedent identification and risk assessment.",
-        imgArr: ["/experience/ai-wakil/case_1.webp"],
+        imgArr: [],
       },
       {
         title: "User Interface",
         description:
           "Created intuitive React interface for document upload and analysis results display.",
-        imgArr: ["/experience/ai-wakil/ui_1.webp"],
+        imgArr: [],
       },
     ],
     descriptionDetails: {
@@ -395,28 +424,34 @@ export const Experiences: ExperienceInterface[] = [
     companyLogoImg: "/experience/leverage-edu/logo.png",
     pagesInfoArr: [
       {
+        title: "Landing Page",
+        description:
+          "Education platform landing page showcasing student services and programs.",
+        imgArr: ["/experience/leverage-edu/landing_1.png"],
+      },
+      {
         title: "Referral Program",
         description:
           "Designed and implemented a Referral Program, increasing student registration by 35%.",
-        imgArr: ["/experience/leverage-edu/referral_1.webp"],
+        imgArr: ["/experience/leverage-edu/referral_1.png"],
       },
       {
         title: "Automated Incentives",
         description:
           "Developed a system that automates incentives and invoices using Redis queues + PostgreSQL transactions.",
-        imgArr: ["/experience/leverage-edu/incentives_1.webp"],
+        imgArr: [],
       },
       {
         title: "Query Optimization",
         description:
           "Optimized SQL queries with indexing strategies, improving lead verification efficiency by 50%.",
-        imgArr: ["/experience/leverage-edu/optimization_1.webp"],
+        imgArr: [],
       },
       {
         title: "Bulk Processing",
         description:
           "Handled bulk uploads (200K+ records) daily with efficient pagination and batching.",
-        imgArr: ["/experience/leverage-edu/bulk_1.webp"],
+        imgArr: [],
       },
     ],
     descriptionDetails: {
@@ -459,31 +494,37 @@ export const Experiences: ExperienceInterface[] = [
     ],
     startDate: new Date("2021-12-01"),
     endDate: new Date("2022-11-01"),
-    companyLogoImg: "/experience/infosys/logo.png",
+    companyLogoImg: "/experience/infosys/logo.jpg",
     pagesInfoArr: [
+      {
+        title: "Landing Page",
+        description:
+          "Enterprise services landing page showcasing Infosys solutions and capabilities.",
+        imgArr: ["/experience/infosys/landing_1.png"],
+      },
       {
         title: "RESTful APIs",
         description:
           "Developed RESTful APIs using Java and Spring Boot for enterprise communication tools.",
-        imgArr: ["/experience/infosys/api_1.webp"],
+        imgArr: [],
       },
       {
         title: "SMS Alerting System",
         description:
           "Built an SMS-based alerting system reducing manual work by 80%.",
-        imgArr: ["/experience/infosys/sms_1.webp"],
+        imgArr: [],
       },
       {
         title: "CI/CD Pipeline",
         description:
           "Implemented CI/CD pipelines with Jenkins and Git, reducing manual release errors.",
-        imgArr: ["/experience/infosys/cicd_1.webp"],
+        imgArr: [],
       },
       {
         title: "Query Optimization",
         description:
           "Performed extensive query optimization, speeding up data retrieval by 60% on large employee datasets.",
-        imgArr: ["/experience/infosys/optimization_1.webp"],
+        imgArr: [],
       },
     ],
     descriptionDetails: {
@@ -531,25 +572,25 @@ export const Experiences: ExperienceInterface[] = [
         title: "SaaS Applications",
         description:
           "Built SaaS applications using Node.js + MongoDB + Redis, optimized with caching and rate limiting.",
-        imgArr: ["/experience/freelance/saas_1.webp"],
+        imgArr: [],
       },
       {
         title: "Cloud Deployment",
         description:
           "Deployed containerized microservices to AWS (EC2, S3, Lambda) using Terraform and Docker.",
-        imgArr: ["/experience/freelance/cloud_1.webp"],
+        imgArr: [],
       },
       {
         title: "Observability",
         description:
           "Added observability using Prometheus and alerting rules for better system monitoring.",
-        imgArr: ["/experience/freelance/monitoring_1.webp"],
+        imgArr: [],
       },
       {
         title: "Performance Optimization",
         description:
           "Improved performance with SQL indexing and query caching for multi-tenant workloads.",
-        imgArr: ["/experience/freelance/performance_1.webp"],
+        imgArr: [],
       },
     ],
     descriptionDetails: {

@@ -30,32 +30,25 @@ export const skillsUnsorted: skillsInterface[] = [
     icon: Icons.javascript,
   },
   {
-    name: "Java",
-    description:
-      "Build robust, scalable applications with enterprise-grade programming language.",
-    rating: 4,
-    icon: Icons.nodejs, // Using nodejs as fallback
-  },
-  {
     name: "Python",
     description:
       "Develop versatile applications with a powerful, readable programming language.",
     rating: 4,
-    icon: Icons.nodejs, // Using nodejs as fallback
+    icon: Icons.python,
   },
   {
     name: "Go",
     description:
       "Build fast, reliable, and efficient software with Google's programming language.",
     rating: 3,
-    icon: Icons.nodejs, // Using nodejs as fallback
+    icon: Icons.go,
   },
   {
     name: "Rust",
     description:
       "Create memory-safe, concurrent software with modern systems programming language.",
     rating: 3,
-    icon: Icons.nodejs, // Using nodejs as fallback
+    icon: Icons.rust,
   },
   {
     name: "Express.js",
@@ -65,18 +58,11 @@ export const skillsUnsorted: skillsInterface[] = [
     icon: Icons.express,
   },
   {
-    name: "Spring Boot",
-    description:
-      "Create production-ready applications with Spring's opinionated framework.",
-    rating: 4,
-    icon: Icons.nestjs, // Using nestjs as fallback
-  },
-  {
     name: "FastAPI",
     description:
       "Build high-performance APIs with modern Python web framework.",
     rating: 3,
-    icon: Icons.express, // Using express as fallback
+    icon: Icons.fastapi,
   },
   {
     name: "React.js",
@@ -97,7 +83,7 @@ export const skillsUnsorted: skillsInterface[] = [
     description:
       "Manage and organize relational databases efficiently for data-driven applications.",
     rating: 5,
-    icon: Icons.mysql, // Using mysql as fallback
+    icon: Icons.postgresql,
   },
   {
     name: "MongoDB",
@@ -111,7 +97,7 @@ export const skillsUnsorted: skillsInterface[] = [
     description:
       "Build high-performance applications with in-memory data structure store.",
     rating: 4,
-    icon: Icons.mongodb, // Using mongodb as fallback
+    icon: Icons.redis,
   },
   {
     name: "MySQL",
@@ -121,32 +107,18 @@ export const skillsUnsorted: skillsInterface[] = [
     icon: Icons.mysql,
   },
   {
-    name: "RabbitMQ",
-    description:
-      "Implement reliable message queuing for distributed systems and microservices.",
-    rating: 4,
-    icon: Icons.socketio, // Using socketio as fallback
-  },
-  {
-    name: "Kafka",
-    description:
-      "Build real-time streaming data pipelines and applications at scale.",
-    rating: 3,
-    icon: Icons.socketio, // Using socketio as fallback
-  },
-  {
     name: "Docker",
     description:
       "Containerize applications for consistent deployment across environments.",
     rating: 4,
-    icon: Icons.nodejs, // Using nodejs as fallback
+    icon: Icons.docker,
   },
   {
     name: "Kubernetes",
     description:
       "Orchestrate containerized applications for scalable, resilient deployments.",
     rating: 3,
-    icon: Icons.nodejs, // Using nodejs as fallback
+    icon: Icons.kubernetes,
   },
   {
     name: "AWS",
@@ -160,14 +132,14 @@ export const skillsUnsorted: skillsInterface[] = [
     description:
       "Manage infrastructure as code for consistent, reproducible deployments.",
     rating: 3,
-    icon: Icons.nodejs, // Using nodejs as fallback
+    icon: Icons.terraform,
   },
   {
     name: "Jenkins",
     description:
       "Automate software development processes with continuous integration and delivery.",
     rating: 4,
-    icon: Icons.nodejs, // Using nodejs as fallback
+    icon: Icons.jenkins,
   },
   {
     name: "GitHub Actions",
@@ -188,14 +160,14 @@ export const skillsUnsorted: skillsInterface[] = [
     description:
       "Monitor and alert on system metrics with powerful time-series database.",
     rating: 3,
-    icon: Icons.nodejs, // Using nodejs as fallback
+    icon: Icons.prometheus,
   },
   {
     name: "Grafana",
     description:
       "Visualize and analyze metrics with powerful monitoring and observability platform.",
     rating: 3,
-    icon: Icons.nodejs, // Using nodejs as fallback
+    icon: Icons.grafana,
   },
   {
     name: "ELK Stack",
@@ -209,28 +181,14 @@ export const skillsUnsorted: skillsInterface[] = [
     description:
       "Build high-performance blockchain applications with fast, secure platform.",
     rating: 3,
-    icon: Icons.nodejs, // Using nodejs as fallback
+    icon: Icons.rust, // Using Rust logo as requested
   },
   {
     name: "Smart Contracts",
     description:
       "Develop self-executing contracts with blockchain technology for decentralized applications.",
     rating: 3,
-    icon: Icons.nodejs, // Using nodejs as fallback
-  },
-  {
-    name: "OpenAI API",
-    description:
-      "Integrate advanced AI capabilities with OpenAI's powerful language models.",
-    rating: 3,
-    icon: Icons.nodejs, // Using nodejs as fallback
-  },
-  {
-    name: "Machine Learning",
-    description:
-      "Build intelligent systems that learn and improve from data patterns.",
-    rating: 3,
-    icon: Icons.nodejs, // Using nodejs as fallback
+    icon: Icons.rust, // Using Rust logo as requested
   },
   {
     name: "Microservices",
@@ -240,25 +198,11 @@ export const skillsUnsorted: skillsInterface[] = [
     icon: Icons.nodejs, // Using nodejs as fallback
   },
   {
-    name: "CQRS",
-    description:
-      "Implement Command Query Responsibility Segregation for scalable data architectures.",
-    rating: 3,
-    icon: Icons.nodejs, // Using nodejs as fallback
-  },
-  {
     name: "Event-Driven",
     description:
       "Build responsive systems that react to events and state changes.",
     rating: 4,
     icon: Icons.socketio, // Using socketio as fallback
-  },
-  {
-    name: "Clean Architecture",
-    description:
-      "Design maintainable software with separation of concerns and dependency rules.",
-    rating: 4,
-    icon: Icons.nodejs, // Using nodejs as fallback
   },
 ];
 

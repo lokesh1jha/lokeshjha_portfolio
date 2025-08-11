@@ -168,7 +168,7 @@ export const careerExperiences: CareerExperienceInterface[] = [
       "SMS Integration",
     ],
     companyUrl: "https://www.infosys.com/",
-    logo: "/experience/infosys/logo.png",
+    logo: "/experience/infosys/logo.jpg",
   },
   {
     id: "freelance",

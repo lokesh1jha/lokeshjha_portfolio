@@ -98,7 +98,12 @@ export type ValidSkills =
   | "Wallet Security"
   | "Fastify"
   | "Document Parsing"
-  | "Legal Tech";
+  | "Legal Tech"
+  | "SLMs"
+  | "Email Security"
+  | "Drone Security"
+  | "Healthcare Security"
+  | "Accord AI";
 
 export type ValidCategory =
   | "Full Stack"
@@ -111,7 +116,8 @@ export type ValidCategory =
   | "Web3"
   | "AI"
   | "Blockchain"
-  | "Cloud";
+  | "Cloud"
+  | "Cybersecurity";
 
 export type ValidExpType = "Personal Project" | "Professional";
 
