@@ -16,11 +16,6 @@ A modern, responsive, and SEO-optimized **Next.js 14 portfolio template** design
 - **Contact Form**: Functional contact form with validation
 - **Open Source**: Free to use and modify for your personal portfolio
 
-## 🚀 Demo
-
-View the live demo at [https://lokeshjha.xyz/](https://lokeshjha.xyz)
-
-https://github.com/lokesh1jha/minimal-next-portfolio/assets/82203888/f93bf5ca-c2bd-4fe5-a413-1050ebf6cf78
 
 ## 🛠️ Tech Stack
 
@@ -39,7 +34,7 @@ To get started with your own portfolio website:
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/lokesh1jha/minimal-next-portfolio.git my-portfolio
+   git clone https://github.com/lokesh1jha/lokeshjha_portfolio
    cd my-portfolio
    ```
 
@@ -128,9 +123,6 @@ The easiest way to deploy your portfolio is using [Vercel](https://vercel.com/ne
 
 Check out the [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-## 🌟 Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=lokesh1jha/minimal-next-portfolio&type=Date)](https://star-history.com/#lokesh1jha/minimal-next-portfolio&Date)
 
 ---
 
