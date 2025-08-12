@@ -4,8 +4,9 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import { Inter as FontSans } from "next/font/google";
 import localFont from "next/font/local";
 import { Toaster } from "sonner";
+import { Analytics } from "@vercel/analytics/next";
 
-import { Analytics } from "@/components/common/analytics";
+import { Analytics as CustomAnalytics } from "@/components/common/analytics";
 import { ThemeProvider } from "@/components/common/theme-provider";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
@@ -126,6 +127,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           ]}
         >
           {children}
+          <CustomAnalytics />
           <Analytics />
           <Toaster richColors position="top-right" />
           <ModalProvider />
