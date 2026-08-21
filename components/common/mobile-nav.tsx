@@ -1,54 +1,68 @@
-import { Norican } from "next/font/google";
+"use client";
+
+import { motion } from "framer-motion";
 import Link from "next/link";
 import * as React from "react";
 
+import { Icons } from "@/components/common/icons";
+import { routesConfig } from "@/config/routes";
 import { siteConfig } from "@/config/site";
 import { useLockBody } from "@/hooks/use-lock-body";
-import { cn } from "@/lib/utils";
 
 interface MobileNavProps {
-  items: any[];
-  children?: React.ReactNode;
+  onClose: () => void;
 }
 
-const norican = Norican({
-  weight: ["400"],
-  style: ["normal"],
-  subsets: ["latin"],
-  display: "swap",
-});
-
-export function MobileNav({ items, children }: MobileNavProps) {
+export function MobileNav({ onClose }: MobileNavProps) {
   useLockBody();
 
   return (
-    <div
-      className={cn(
-        "fixed inset-0 top-12 z-50 grid h-[calc(100vh-4rem)] grid-flow-row auto-rows-max overflow-auto p-6 pb-32 shadow-md animate-in slide-in-from-top-10 md:hidden"
-      )}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+      className="fixed inset-x-0 top-16 z-50 h-[calc(100vh-4rem)] overflow-y-auto border-t border-border bg-background/95 backdrop-blur-xl md:hidden"
     >
-      <div className="relative z-20 grid gap-6 rounded-md bg-popover p-4 text-popover-foreground shadow-md">
-        <Link href="/" className="flex items-center space-x-2">
-          <span className={cn(norican.className, "text-2xl")}>
-            {siteConfig.authorName}
-          </span>
-        </Link>
-        <nav className="grid grid-flow-row auto-rows-max text-sm">
-          {items.map((item, index) => (
+      <nav className="container flex flex-col py-4">
+        {routesConfig.mainNav.map((item, index) => (
+          <motion.div
+            key={item.href}
+            initial={{ opacity: 0, x: -12 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.05 * index, duration: 0.25 }}
+          >
             <Link
-              key={index}
-              href={item.disabled ? "#" : item.href}
-              className={cn(
-                "flex w-full items-center rounded-md p-2 text-sm font-medium hover:underline",
-                item.disabled && "cursor-not-allowed opacity-60"
-              )}
+              href={item.href}
+              onClick={onClose}
+              className="flex items-center justify-between border-b border-border/60 py-4 font-heading text-2xl tracking-tight"
             >
               {item.title}
+              <Icons.arrowRight className="h-5 w-5 text-muted-foreground" />
             </Link>
-          ))}
-        </nav>
-        {children}
-      </div>
-    </div>
+          </motion.div>
+        ))}
+
+        <div className="mt-6 flex flex-col gap-3">
+          <Link
+            href={siteConfig.links.getcollab}
+            target="_blank"
+            rel="noreferrer"
+            onClick={onClose}
+            className="flex items-center justify-center gap-2 rounded-full bg-brand-500 px-6 py-4 text-base font-semibold text-primary-foreground"
+          >
+            <Icons.globe className="h-5 w-5" />
+            Visit getcollab.in
+          </Link>
+          <a
+            href={siteConfig.links.email}
+            className="flex items-center justify-center gap-2 rounded-full border border-border px-6 py-4 text-base font-semibold"
+          >
+            <Icons.gmail className="h-5 w-5" />
+            {siteConfig.links.email.replace("mailto:", "")}
+          </a>
+        </div>
+      </nav>
+    </motion.div>
   );
 }

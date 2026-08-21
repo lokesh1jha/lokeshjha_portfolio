@@ -12,9 +12,12 @@ module.exports = {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: {
+        DEFAULT: "1.25rem",
+        md: "2rem",
+      },
       screens: {
-        "2xl": "1400px",
+        "2xl": "1200px",
       },
     },
     extend: {
@@ -24,6 +27,19 @@ module.exports = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        brand: {
+          50: "#eefaff",
+          100: "#d9f3ff",
+          200: "#b3e9ff",
+          300: "#7ddcff",
+          400: "#3fceff",
+          500: "#27beff",
+          600: "#0ea5e9",
+          700: "#0284c7",
+          800: "#056ba1",
+          900: "#0c5a85",
+          950: "#083a59",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -57,10 +73,22 @@ module.exports = {
         sans: ["var(--font-sans)", ...fontFamily.sans],
         heading: ["var(--font-heading)", ...fontFamily.sans],
       },
+      fontSize: {
+        "display-sm": ["clamp(2.25rem, 6vw, 3.5rem)", { lineHeight: "1.05" }],
+        display: ["clamp(2.75rem, 8vw, 5.5rem)", { lineHeight: "1.02" }],
+        "display-lg": ["clamp(3.5rem, 10vw, 7.5rem)", { lineHeight: "0.98" }],
+      },
       borderRadius: {
         lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        md: "calc(var(--radius) - 4px)",
+        sm: "calc(var(--radius) - 8px)",
+        "4xl": "2rem",
+      },
+      boxShadow: {
+        card: "0 1px 2px rgba(15,17,21,0.04), 0 8px 24px -12px rgba(15,17,21,0.12)",
+        "card-hover":
+          "0 2px 4px rgba(15,17,21,0.05), 0 16px 40px -12px rgba(15,17,21,0.18)",
+        glow: "0 0 60px -12px rgba(39,190,255,0.55)",
       },
       keyframes: {
         "accordion-down": {
@@ -71,24 +99,23 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: 0 },
         },
+        "fade-up": {
+          from: { opacity: 0, transform: "translateY(16px)" },
+          to: { opacity: 1, transform: "translateY(0)" },
+        },
+        "float-slow": {
+          "0%, 100%": { transform: "translateY(0) scale(1)" },
+          "50%": { transform: "translateY(-18px) scale(1.04)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-up": "fade-up 0.7s cubic-bezier(0.19, 1, 0.22, 1) both",
+        "float-slow": "float-slow 9s ease-in-out infinite",
       },
     },
   },
   plugins: [require("tailwindcss-animate")],
-  safelist: [
-    "dark",
-    "retro",
-    "cyberpunk",
-    "paper",
-    "aurora",
-    "synthwave",
-    {
-      pattern:
-        /^(.*?)(dark|retro|cyberpunk|paper|aurora|synthwave)([:.])(.*?)$/,
-    },
-  ],
+  safelist: ["dark"],
 };

@@ -2,37 +2,22 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Naman Barkiya Portfolio",
-    short_name: "Naman's Portfolio",
+    name: "Lokesh Jha - Co-Founder & CEO, GetCollab",
+    short_name: "Lokesh Jha",
     description:
-      "Naman Barkiya's modern developer portfolio built with Next.js - available as an open-source template",
+      "Lokesh Jha - Co-Founder & CEO of GetCollab, a global creator marketplace connecting brands with creators.",
     start_url: "/",
     display: "standalone",
-    background_color: "#ffffff",
-    theme_color: "#000000",
+    background_color: "#f6f6f2",
+    theme_color: "#27beff",
     icons: [
       {
-        src: "/favicon.ico",
-        sizes: "64x64",
+        src: "/logo.png",
+        sizes: "any",
         type: "image/png",
       },
-      {
-        src: "/favicon.ico",
-        sizes: "64x64",
-        type: "image/png",
-        purpose: "maskable",
-      },
     ],
-    categories: [
-      "portfolio",
-      "template",
-      "development",
-      "nextjs",
-      "react",
-      "developer",
-      "web development",
-      "open source",
-    ],
+    categories: ["portfolio", "business", "creator", "startup"],
     lang: "en",
     dir: "ltr",
     scope: "/",

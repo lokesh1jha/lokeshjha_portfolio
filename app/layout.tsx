@@ -1,7 +1,5 @@
 import "./globals.css";
 
-import { GoogleAnalytics } from "@next/third-parties/google";
-import { Inter as FontSans } from "next/font/google";
 import localFont from "next/font/local";
 import { Toaster } from "sonner";
 import { Analytics } from "@vercel/analytics/next";
@@ -12,20 +10,27 @@ import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { ModalProvider } from "@/providers/modal-provider";
 
-const fontSans = FontSans({
-  subsets: ["latin"],
+// Font files can be colocated inside of `pages`
+const fontSans = localFont({
+  src: [
+    {
+      path: "../assets/fonts/Inter-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../assets/fonts/Inter-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
   variable: "--font-sans",
 });
 
-// Font files can be colocated inside of `pages`
 const fontHeading = localFont({
   src: "../assets/fonts/CalSans-SemiBold.woff2",
   variable: "--font-heading",
 });
-
-interface RootLayoutProps {
-  children: React.ReactNode;
-}
 
 export const metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -97,11 +102,6 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }: RootLayoutProps) {
-  // const GA_ID = process.env.NEXT_PUBLIC_GOOGLE_MEASUREMENT_ID;
-  // if (!GA_ID) {
-  //   throw new Error("Missing Google Analytics ID");
-  // }
-
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
@@ -114,17 +114,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
-          themes={[
-            "light",
-            "dark",
-            "retro",
-            "cyberpunk",
-            "paper",
-            "aurora",
-            "synthwave",
-          ]}
+          defaultTheme="light"
+          enableSystem={false}
+          themes={["light", "dark"]}
         >
           {children}
           <CustomAnalytics />
@@ -133,7 +125,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <ModalProvider />
         </ThemeProvider>
       </body>
-      {/* <GoogleAnalytics gaId={GA_ID} /> */}
     </html>
   );
+}
+
+interface RootLayoutProps {
+  children: React.ReactNode;
 }

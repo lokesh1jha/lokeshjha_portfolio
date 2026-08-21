@@ -1,24 +1,26 @@
-export const routesConfig: any = {
+export const routesConfig: {
+  mainNav: { title: string; href: string }[];
+} = {
   mainNav: [
     {
-      title: "Skills",
-      href: "/skills",
+      title: "About",
+      href: "#about",
     },
     {
-      title: "Experience",
-      href: "/experience",
+      title: "GetCollab",
+      href: "#getcollab",
     },
     {
-      title: "Career",
-      href: "/career",
+      title: "Background",
+      href: "#background",
     },
     {
-      title: "Contributions",
-      href: "/contributions",
+      title: "Journey",
+      href: "#journey",
     },
     {
       title: "Contact",
-      href: "/contact",
+      href: "#contact",
     },
   ],
 };
